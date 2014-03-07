@@ -1,0 +1,2 @@
+id,model,code,name,parent_id,type,user_type,reconcile
+str,str,str,str,search,str,ref,str

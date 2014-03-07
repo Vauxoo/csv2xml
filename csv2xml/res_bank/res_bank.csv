@@ -1,0 +1,7 @@
+id,model,name,
+str,str,str,
+rb_mycompany_bod,res.bank,BOD - Banco Occidental de Descuento,
+rb_mycompany_banesco,res.bank,Banesco,
+rb_mycompany_venezuela,res.bank,BDV - Banco de Venezuela,
+rb_mycompany_provincial,res.bank,Banco Provincial,
+rb_mycompany_industrial,res.bank,Banco Industrial de Venezuela,

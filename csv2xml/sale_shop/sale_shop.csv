@@ -1,0 +1,2 @@
+id,model,name,warehouse_id,payment_default_id,pricelist_id,company_id
+str,str,str,ref,ref,ref,ref

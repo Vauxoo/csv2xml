@@ -1,0 +1,2 @@
+"id","model","name","usage","chained_location_type","chained_auto_packing","company_id","location_id"
+str,str,str,str,str,str,ref,ref

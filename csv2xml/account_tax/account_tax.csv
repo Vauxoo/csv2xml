@@ -1,0 +1,10 @@
+id,model,name,amount,type_tax_use,applicable_type,appl_type,ret,account_paid_id,account_collected_id,wh_vat_paid_account_id,wh_vat_collected_account_id
+str,str,str,str,str,str,str,evalc,search,search,str,str
+at_mycompany_ivasale1,account.tax,"IVA - Sale 12% - General",0.12,sale,true,general,True,,,,
+at_mycompany_ivasale2,account.tax,"IVA - Sale 22% - Additional",0.22,sale,true,adicional,True,,,,
+at_mycompany_ivasale3,account.tax,"IVA - Sale 0% - Exempt",0.0,sale,true,exento,False,,,,
+at_mycompany_ivasale4,account.tax,"IVA - Sale 8% - Reducted",0.08,sale,true,reducido,True,,,,
+at_mycompany_ivapurchase1,account.tax,"IVA - Purchase 12% - General",0.12,purchase,true,general,True,,,,
+at_mycompany_ivapurchase2,account.tax,"IVA - Purchase 22% - Additional",0.22,purchase,true,adicional,True,,,,
+at_mycompany_ivapurchase3,account.tax,"IVA - Purchase 8% - Reducted",0.08,purchase,true,reducido,True,,,,
+at_mycompany_ivapurchase4,account.tax,"IVA - Purchase 0% - Exempt",0.0,purchase,true,exento,False,,,,

@@ -1,0 +1,3 @@
+id,model,name,code,date_start,date_stop,company_id,
+str,str,evalc,evalc,evalc,evalc,ref,
+af_mycompany,account.fiscalyear,'Año Fiscal X '+time.strftime('%Y'),'AF'+time.strftime('%Y'),time.strftime('%Y')+'-01-01',time.strftime('%Y')+'-12-31',base.main_company

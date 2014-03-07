@@ -1,0 +1,2 @@
+id,model,name,uom_type,factor,rounding,category_id,active
+str,str,str,ref,str,str,ref,str

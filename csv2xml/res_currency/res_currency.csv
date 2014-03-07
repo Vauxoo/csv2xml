@@ -1,0 +1,5 @@
+id,model,name,symbol,rounding,accuracy
+str,str,str,str,str,str
+base.EUR,res.currency,VEFX2,Bs.F,0.01,4,
+base.VEF,res.currency,EUR,€,0.01,4,
+base.EUR,res.currency,VEF,
