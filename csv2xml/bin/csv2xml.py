@@ -5,7 +5,7 @@ import argcomplete
 
 
 def main():
-    f = open('__config__.py','r')
+    f = open('../src/__config__.py','r')
     d = eval(f.read())
     f.close()
     print ' --- The script is running, please wait...'
