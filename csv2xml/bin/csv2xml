@@ -58,7 +58,7 @@ def confirm_run(args):
 
 def fix_args(args):
     args.module_name = args.module_name.replace('/', '')
-    args.full_path = os.getcwd() + '/' + args.module_name
+    args.module_full_path = os.getcwd() + '/' + args.module_name
     return args
 
 def main():
@@ -75,7 +75,7 @@ def main():
         csv_files = i[1]
         csv2xml.genrate_xml_tree(csv_files, out_data, i[0])
         csv2xml.aditional_parser(i[0], out_data)
-        csv2xml.write_xml_doc(out_doc, '%s/data/%s.xml' % (args.full_path, i[0]) )
+        csv2xml.write_xml_doc(out_doc, '%s/data/%s.xml' % (args.module_full_path, i[0]) )
     print ' --- The script successfully finish.' 
 
 if __name__ == '__main__':
