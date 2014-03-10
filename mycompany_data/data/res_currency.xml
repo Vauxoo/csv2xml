@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<openerp>
+  <data noupdate="1">
+    <record id="base.EUR" model="res.currency">
+      <field name="name">VEFX2</field>
+      <field name="rounding">0.01</field>
+      <field name="symbol">Bs.F</field>
+      <field name="accuracy">4</field>
+    </record>
+    <record id="base.VEF" model="res.currency">
+      <field name="name">EUR</field>
+      <field name="rounding">0.01</field>
+      <field name="symbol">€</field>
+      <field name="accuracy">4</field>
+    </record>
+    <record id="base.EUR" model="res.currency">
+      <field name="name">VEF</field>
+    </record>
+    <record id="base.rateEUR" model="res.currency.rate">
+      <field name="currency_id" ref="base.EUR"/>
+      <field name="rate">1.0</field>
+      <field name="name" eval="time.strftime('%Y-01-01')"/>
+    </record>
+    <record id="base.rateVEF" model="res.currency.rate">
+      <field name="currency_id" ref="base.VEF"/>
+      <field name="rate">0.117096</field>
+      <field name="name" eval="time.strftime('%Y-01-01')"/>
+    </record>
+    <record id="base.rateUSD" model="res.currency.rate">
+      <field name="currency_id" ref="base.USD"/>
+      <field name="rate">0.158730</field>
+      <field name="name" eval="time.strftime('%Y-01-01')"/>
+    </record>
+  </data>
+</openerp>

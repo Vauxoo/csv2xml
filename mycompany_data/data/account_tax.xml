@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<openerp>
+  <data noupdate="1">
+    <record id="at_mycompany_ivasale1" model="account.tax">
+      <field name="applicable_type">true</field>
+      <field name="type_tax_use">sale</field>
+      <field name="amount">0.12</field>
+      <field name="appl_type">general</field>
+      <field name="ret" eval="True"/>
+      <field name="name">IVA - Sale 12% - General</field>
+    </record>
+    <record id="at_mycompany_ivasale2" model="account.tax">
+      <field name="applicable_type">true</field>
+      <field name="type_tax_use">sale</field>
+      <field name="amount">0.22</field>
+      <field name="appl_type">adicional</field>
+      <field name="ret" eval="True"/>
+      <field name="name">IVA - Sale 22% - Additional</field>
+    </record>
+    <record id="at_mycompany_ivasale3" model="account.tax">
+      <field name="applicable_type">true</field>
+      <field name="type_tax_use">sale</field>
+      <field name="amount">0.0</field>
+      <field name="appl_type">exento</field>
+      <field name="ret" eval="False"/>
+      <field name="name">IVA - Sale 0% - Exempt</field>
+    </record>
+    <record id="at_mycompany_ivasale4" model="account.tax">
+      <field name="applicable_type">true</field>
+      <field name="type_tax_use">sale</field>
+      <field name="amount">0.08</field>
+      <field name="appl_type">reducido</field>
+      <field name="ret" eval="True"/>
+      <field name="name">IVA - Sale 8% - Reducted</field>
+    </record>
+    <record id="at_mycompany_ivapurchase1" model="account.tax">
+      <field name="applicable_type">true</field>
+      <field name="type_tax_use">purchase</field>
+      <field name="amount">0.12</field>
+      <field name="appl_type">general</field>
+      <field name="ret" eval="True"/>
+      <field name="name">IVA - Purchase 12% - General</field>
+    </record>
+    <record id="at_mycompany_ivapurchase2" model="account.tax">
+      <field name="applicable_type">true</field>
+      <field name="type_tax_use">purchase</field>
+      <field name="amount">0.22</field>
+      <field name="appl_type">adicional</field>
+      <field name="ret" eval="True"/>
+      <field name="name">IVA - Purchase 22% - Additional</field>
+    </record>
+    <record id="at_mycompany_ivapurchase3" model="account.tax">
+      <field name="applicable_type">true</field>
+      <field name="type_tax_use">purchase</field>
+      <field name="amount">0.08</field>
+      <field name="appl_type">reducido</field>
+      <field name="ret" eval="True"/>
+      <field name="name">IVA - Purchase 8% - Reducted</field>
+    </record>
+    <record id="at_mycompany_ivapurchase4" model="account.tax">
+      <field name="applicable_type">true</field>
+      <field name="type_tax_use">purchase</field>
+      <field name="amount">0.0</field>
+      <field name="appl_type">exento</field>
+      <field name="ret" eval="False"/>
+      <field name="name">IVA - Purchase 0% - Exempt</field>
+    </record>
+  </data>
+</openerp>

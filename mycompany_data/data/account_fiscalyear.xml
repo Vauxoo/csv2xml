@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<openerp>
+  <data noupdate="1">
+    <record id="af_mycompany" model="account.fiscalyear">
+      <field name="date_stop" eval="time.strftime('%Y')+'-12-31'"/>
+      <field name="code" eval="'AF'+time.strftime('%Y')"/>
+      <field name="name" eval="'Año Fiscal X '+time.strftime('%Y')"/>
+      <field name="date_start" eval="time.strftime('%Y')+'-01-01'"/>
+      <field name="company_id" ref="base.main_company"/>
+    </record>
+    <record id="ap_mycompany_00" model="account.period">
+      <field name="date_stop" eval="time.strftime('%Y')+'-01-01'"/>
+      <field name="code" eval="'AP/'+time.strftime('%Y')"/>
+      <field name="name" eval="'X AP/'+time.strftime('%Y')"/>
+      <field name="date_start" eval="time.strftime('%Y')+'-01-01'"/>
+      <field name="company_id" ref="base.main_company"/>
+      <field name="fiscalyear_id" ref="af_mycompany"/>
+      <field name="special" eval="True"/>
+    </record>
+    <record id="ap_mycompany_01" model="account.period">
+      <field name="date_stop" eval="time.strftime('%Y')+'-01-31'"/>
+      <field name="code" eval="'01/'+time.strftime('%Y')"/>
+      <field name="name" eval="'X 01/'+time.strftime('%Y')"/>
+      <field name="date_start" eval="time.strftime('%Y')+'-01-01'"/>
+      <field name="company_id" ref="base.main_company"/>
+      <field name="fiscalyear_id" ref="af_mycompany"/>
+      <field name="special" eval="False"/>
+    </record>
+    <record id="ap_mycompany_02" model="account.period">
+      <field name="date_stop" eval="(DateTime.today().replace(month=3, day=1) - timedelta(days=1)).strftime('%Y-%m-%d')"/>
+      <field name="code" eval="'02/'+time.strftime('%Y')"/>
+      <field name="name" eval="'X 02/'+time.strftime('%Y')"/>
+      <field name="date_start" eval="time.strftime('%Y')+'-02-01'"/>
+      <field name="company_id" ref="base.main_company"/>
+      <field name="fiscalyear_id" ref="af_mycompany"/>
+      <field name="special" eval="False"/>
+    </record>
+    <record id="ap_mycompany_03" model="account.period">
+      <field name="date_stop" eval="time.strftime('%Y')+'-03-31'"/>
+      <field name="code" eval="'03/'+time.strftime('%Y')"/>
+      <field name="name" eval="'X 03/'+time.strftime('%Y')"/>
+      <field name="date_start" eval="time.strftime('%Y')+'-03-01'"/>
+      <field name="company_id" ref="base.main_company"/>
+      <field name="fiscalyear_id" ref="af_mycompany"/>
+      <field name="special" eval="False"/>
+    </record>
+    <record id="ap_mycompany_04" model="account.period">
+      <field name="date_stop" eval="time.strftime('%Y')+'-04-30'"/>
+      <field name="code" eval="'04/'+time.strftime('%Y')"/>
+      <field name="name" eval="'X 04/'+time.strftime('%Y')"/>
+      <field name="date_start" eval="time.strftime('%Y')+'-04-01'"/>
+      <field name="company_id" ref="base.main_company"/>
+      <field name="fiscalyear_id" ref="af_mycompany"/>
+      <field name="special" eval="False"/>
+    </record>
+    <record id="ap_mycompany_05" model="account.period">
+      <field name="date_stop" eval="time.strftime('%Y')+'-05-31'"/>
+      <field name="code" eval="'05/'+time.strftime('%Y')"/>
+      <field name="name" eval="'X 05/'+time.strftime('%Y')"/>
+      <field name="date_start" eval="time.strftime('%Y')+'-05-01'"/>
+      <field name="company_id" ref="base.main_company"/>
+      <field name="fiscalyear_id" ref="af_mycompany"/>
+      <field name="special" eval="False"/>
+    </record>
+    <record id="ap_mycompany_06" model="account.period">
+      <field name="date_stop" eval="time.strftime('%Y')+'-06-30'"/>
+      <field name="code" eval="'06/'+time.strftime('%Y')"/>
+      <field name="name" eval="'X 06/'+time.strftime('%Y')"/>
+      <field name="date_start" eval="time.strftime('%Y')+'-06-01'"/>
+      <field name="company_id" ref="base.main_company"/>
+      <field name="fiscalyear_id" ref="af_mycompany"/>
+      <field name="special" eval="False"/>
+    </record>
+    <record id="ap_mycompany_07" model="account.period">
+      <field name="date_stop" eval="time.strftime('%Y')+'-07-31'"/>
+      <field name="code" eval="'07/'+time.strftime('%Y')"/>
+      <field name="name" eval="'X 07/'+time.strftime('%Y')"/>
+      <field name="date_start" eval="time.strftime('%Y')+'-07-01'"/>
+      <field name="company_id" ref="base.main_company"/>
+      <field name="fiscalyear_id" ref="af_mycompany"/>
+      <field name="special" eval="False"/>
+    </record>
+    <record id="ap_mycompany_08" model="account.period">
+      <field name="date_stop" eval="time.strftime('%Y')+'-08-31'"/>
+      <field name="code" eval="'08/'+time.strftime('%Y')"/>
+      <field name="name" eval="'X 08/'+time.strftime('%Y')"/>
+      <field name="date_start" eval="time.strftime('%Y')+'-08-01'"/>
+      <field name="company_id" ref="base.main_company"/>
+      <field name="fiscalyear_id" ref="af_mycompany"/>
+      <field name="special" eval="False"/>
+    </record>
+    <record id="ap_mycompany_09" model="account.period">
+      <field name="date_stop" eval="time.strftime('%Y')+'-09-30'"/>
+      <field name="code" eval="'09/'+time.strftime('%Y')"/>
+      <field name="name" eval="'X 09/'+time.strftime('%Y')"/>
+      <field name="date_start" eval="time.strftime('%Y')+'-09-01'"/>
+      <field name="company_id" ref="base.main_company"/>
+      <field name="fiscalyear_id" ref="af_mycompany"/>
+      <field name="special" eval="False"/>
+    </record>
+    <record id="ap_mycompany_10" model="account.period">
+      <field name="date_stop" eval="time.strftime('%Y')+'-10-31'"/>
+      <field name="code" eval="'10/'+time.strftime('%Y')"/>
+      <field name="name" eval="'X 10/'+time.strftime('%Y')"/>
+      <field name="date_start" eval="time.strftime('%Y')+'-10-01'"/>
+      <field name="company_id" ref="base.main_company"/>
+      <field name="fiscalyear_id" ref="af_mycompany"/>
+      <field name="special" eval="False"/>
+    </record>
+    <record id="ap_mycompany_11" model="account.period">
+      <field name="date_stop" eval="time.strftime('%Y')+'-11-30'"/>
+      <field name="code" eval="'11/'+time.strftime('%Y')"/>
+      <field name="name" eval="'X 11/'+time.strftime('%Y')"/>
+      <field name="date_start" eval="time.strftime('%Y')+'-11-01'"/>
+      <field name="company_id" ref="base.main_company"/>
+      <field name="fiscalyear_id" ref="af_mycompany"/>
+      <field name="special" eval="False"/>
+    </record>
+    <record id="ap_mycompany_12" model="account.period">
+      <field name="date_stop" eval="time.strftime('%Y')+'-12-31'"/>
+      <field name="code" eval="'12/'+time.strftime('%Y')"/>
+      <field name="name" eval="'X 12/'+time.strftime('%Y')"/>
+      <field name="date_start" eval="time.strftime('%Y')+'-12-01'"/>
+      <field name="company_id" ref="base.main_company"/>
+      <field name="fiscalyear_id" ref="af_mycompany"/>
+      <field name="special" eval="False"/>
+    </record>
+  </data>
+</openerp>

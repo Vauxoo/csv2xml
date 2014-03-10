@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<openerp>
+  <data noupdate="1">
+    <record id="rb_mycompany_bod" model="res.bank">
+      <field name="name">BOD - Banco Occidental de Descuento</field>
+    </record>
+    <record id="rb_mycompany_banesco" model="res.bank">
+      <field name="name">Banesco</field>
+    </record>
+    <record id="rb_mycompany_venezuela" model="res.bank">
+      <field name="name">BDV - Banco de Venezuela</field>
+    </record>
+    <record id="rb_mycompany_provincial" model="res.bank">
+      <field name="name">Banco Provincial</field>
+    </record>
+    <record id="rb_mycompany_industrial" model="res.bank">
+      <field name="name">Banco Industrial de Venezuela</field>
+    </record>
+  </data>
+</openerp>

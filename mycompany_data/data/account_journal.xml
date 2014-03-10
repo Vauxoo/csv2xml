@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<openerp>
+  <data noupdate="1">
+    <record id="aj_mycompany_opening" model="account.journal">
+      <field name="code">DA</field>
+      <field name="name">Diario de Apertura</field>
+      <field name="company_id" ref="base.main_company"/>
+      <field name="type">situation</field>
+    </record>
+    <record id="aj_mycompany_purchase" model="account.journal">
+      <field name="code">DC</field>
+      <field name="name">Diario de Compra</field>
+      <field name="company_id" ref="base.main_company"/>
+      <field name="type">purchase</field>
+    </record>
+    <record id="aj_mycompany_writeoff" model="account.journal">
+      <field name="code">DD</field>
+      <field name="name">Diario de Diferencias</field>
+      <field name="company_id" ref="base.main_company"/>
+      <field name="type">general</field>
+    </record>
+    <record id="aj_mycompany_general" model="account.journal">
+      <field name="code">DG</field>
+      <field name="name">Diario General</field>
+      <field name="company_id" ref="base.main_company"/>
+      <field name="type">general</field>
+    </record>
+    <record id="stock.stock_journal" model="account.journal">
+      <field name="code">DI</field>
+      <field name="name">Diario de Inventario</field>
+      <field name="company_id" ref="base.main_company"/>
+      <field name="type">general</field>
+    </record>
+    <record id="aj_mycompany_purchase_credit_note" model="account.journal">
+      <field name="code">DNCC</field>
+      <field name="name">Diario de Nota de Credito de Compra</field>
+      <field name="company_id" ref="base.main_company"/>
+      <field name="type">purchase_refund</field>
+    </record>
+    <record id="aj_mycompany_sale_credit_note" model="account.journal">
+      <field name="code">DNCV</field>
+      <field name="name">Diario de Nota de Credito de Venta</field>
+      <field name="company_id" ref="base.main_company"/>
+      <field name="type">sale_refund</field>
+    </record>
+    <record id="aj_mycompany_purchase_debit_note" model="account.journal">
+      <field name="code">DNDC</field>
+      <field name="name">Diario de Nota de Debito de Compra</field>
+      <field name="company_id" ref="base.main_company"/>
+      <field name="type">purchase_debit</field>
+    </record>
+    <record id="aj_mycompany_sale_debit_note" model="account.journal">
+      <field name="code">DNDV</field>
+      <field name="name">Diario de Nota de Debito de Venta</field>
+      <field name="company_id" ref="base.main_company"/>
+      <field name="type">sale_debit</field>
+    </record>
+    <record id="aj_mycompany_src_purchase" model="account.journal">
+      <field name="code">DRCC</field>
+      <field name="name">Diario de Retenciones de CRS de Compra</field>
+      <field name="company_id" ref="base.main_company"/>
+      <field name="type">src_purchase</field>
+    </record>
+    <record id="aj_mycompany_src_sale" model="account.journal">
+      <field name="code">DRCV</field>
+      <field name="name">Diario de Retenciones de CRS de Venta</field>
+      <field name="company_id" ref="base.main_company"/>
+      <field name="type">src_sale</field>
+    </record>
+    <record id="aj_mycompany_vat_purchase" model="account.journal">
+      <field name="code">DRIC</field>
+      <field name="name">Diario de Retenciones de IVA de Compra</field>
+      <field name="company_id" ref="base.main_company"/>
+      <field name="type">iva_purchase</field>
+    </record>
+    <record id="aj_mycompany_islr_purchase" model="account.journal">
+      <field name="code">DRIsC</field>
+      <field name="name">Diario de Retenciones de ISLR de Compra</field>
+      <field name="company_id" ref="base.main_company"/>
+      <field name="type">islr_purchase</field>
+    </record>
+    <record id="aj_mycompany_islr_sale" model="account.journal">
+      <field name="code">DRIsV</field>
+      <field name="name">Diario de Retenciones de ISLR de Venta</field>
+      <field name="company_id" ref="base.main_company"/>
+      <field name="type">islr_sale</field>
+    </record>
+    <record id="aj_mycompany_vat_sale" model="account.journal">
+      <field name="code">DRIV</field>
+      <field name="name">Diario de Retenciones de IVA de Venta</field>
+      <field name="company_id" ref="base.main_company"/>
+      <field name="type">iva_sale</field>
+    </record>
+    <record id="aj_mycompany_mun_purchase" model="account.journal">
+      <field name="code">DRMC</field>
+      <field name="name">Diario de Rerenciones de Impuesto Municipal de Compra</field>
+      <field name="company_id" ref="base.main_company"/>
+      <field name="type">mun_purchase</field>
+    </record>
+    <record id="aj_mycompany_mun_sale" model="account.journal">
+      <field name="code">DRMV</field>
+      <field name="name">Diario de Retenciones de Impuesto Municipal de Venta</field>
+      <field name="company_id" ref="base.main_company"/>
+      <field name="type">mun_sale</field>
+    </record>
+    <record id="aj_mycompany_sale" model="account.journal">
+      <field name="code">DV</field>
+      <field name="name">Diario de Ventas</field>
+      <field name="company_id" ref="base.main_company"/>
+      <field name="type">sale</field>
+    </record>
+  </data>
+</openerp>
