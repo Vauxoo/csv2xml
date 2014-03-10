@@ -18,12 +18,19 @@ Development by Vauxoo Team (lp:~vauxoo)
 Coded by Katherine Zaoral <kathy@vauxoo.com>.
 Source code at lp:~vauxoo-private/vauxoo-private/data_init-dev-kty.""",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+
     parser.add_argument(
         '-m', '--module-name',
         metavar='MODULE_NAME',
         type=str,
         required=True,
         help='name of the module to be update.')
+    parser.add_argument(
+        '-c', '--cvs-dir',
+        metavar='CVS DIR', 
+        type=str,
+        required=True,
+        help='the folder where the csv and config files are.')
 
     argcomplete.autocomplete(parser)
     return parser.parse_args()
