@@ -19,7 +19,7 @@ setup(
     author_email='info@vauxoo.com',
     packages=['csv2xml'],
     package_data={'csv2xml': [
-        'data/__config__.py',
+        'data/csv/__config__.py',
         'data/csv/account_account/*',
         'data/csv/account_account_type/*',
         'data/csv/account_fiscalyear/*',
