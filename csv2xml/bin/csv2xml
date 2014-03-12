@@ -11,7 +11,7 @@ def argument_parser():
     parameters of this program (default values, choices values)
     """
     parser = argparse.ArgumentParser(
-        prog='new_module_openerp',
+        prog='csv2xml',
         description='Update data xml from a module via csv files.',
         epilog="""
 Openerp Developer Comunity Tool
