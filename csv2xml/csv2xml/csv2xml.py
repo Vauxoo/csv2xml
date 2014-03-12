@@ -68,7 +68,7 @@ def genrate_xml_tree(csv_files, out_data, folder):
 
 def get_bank_data():
     """
-    Read the account account cvs and extract a list of tuples
+    Read the account account csv and extract a list of tuples
     [(xml_acc_id, acc_name)].
     """
     csv_name = 'account_account/account_account.csv'
@@ -163,4 +163,18 @@ def create_csv_template(args):
     this_dir, this_filename = os.path.split(__file__)
     os.system('cp %s/data/csv %s -r' % (this_dir, args.csv_dir_full_path))
 
-
+def update_xml(args):
+ 
+    print '... Updating the data xml files.'
+    f = open( '/'.join([args.csv_dir_full_path, '__confing__.py']), 'r')
+    d = eval(f.read())
+    f.close()
+    print ' ---- d', d
+    print ' ---- The script is running, please wait...'
+    for i in d.iteritems():
+        out_doc, out_data = initializate_xml_out()
+        csv_files = i[1]
+        genrate_xml_tree(csv_files, out_data, i[0])
+        aditional_parser(i[0], out_data)
+        write_xml_doc(out_doc, '%s/data/%s.xml' % (args.module_full_path, i[0]) )
+    print ' --- The script successfully finish.' 

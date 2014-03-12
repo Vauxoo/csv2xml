@@ -76,8 +76,7 @@ def fix_args(args):
     if args.action == 'update':
         args.module_name = args.module_name.replace('/', '')
         args.module_full_path = urljoin(full_path, args.module_name)
-    elif args.action == 'create':
-        args.csv_dir_full_path = urljoin(full_path, args.csv_dir)
+    args.csv_dir_full_path = urljoin(full_path, args.csv_dir)
     return args
 
 def main():
@@ -86,19 +85,8 @@ def main():
     confirm_run(args)
     if args.action == 'create':
         csv2xml.create_csv_template(args)
-
-    exit()
-    f = open('../src/__config__.py','r')
-    d = eval(f.read())
-    f.close()
-    print ' --- The script is running, please wait...'
-    for i in d.iteritems():
-        out_doc, out_data = csv2xml.initializate_xml_out()
-        csv_files = i[1]
-        csv2xml.genrate_xml_tree(csv_files, out_data, i[0])
-        csv2xml.aditional_parser(i[0], out_data)
-        csv2xml.write_xml_doc(out_doc, '%s/data/%s.xml' % (args.module_full_path, i[0]) )
-    print ' --- The script successfully finish.' 
+    elif args.action == 'update':
+        csv2xml.update_xml(args)
 
 if __name__ == '__main__':
     main()
