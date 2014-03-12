@@ -29,16 +29,15 @@ Source code at lp:~vauxoo-private/vauxoo-private/data_init-dev-kty.""",
     create_parser = subparsers.add_parser(
         'create', help='Create csv files templates.')
 
-    parser.add_argument(
+    update_parser.add_argument(
         'module-name',
         metavar='MODULE_NAME',
         type=str,
         help='name of the module to be update.')
-    parser.add_argument(
-        '-c', '--csv-dir',
-        metavar='CSV DIR', 
+    update_parser.add_argument(
+        'csv-dir',
+        metavar='CSV_DIR', 
         type=str,
-        required=True,
         help='the folder where your csv and config files are.')
 
     argcomplete.autocomplete(parser)
