@@ -41,6 +41,11 @@ Source code at lp:~vauxoo-private/vauxoo-private/data_init-dev-kty.""",
         metavar='CSV_DIR', 
         type=str,
         help='the folder where your csv and config files are.')
+    create_parser.add_argument(
+        'csv-dir',
+        metavar='CSV_DIR', 
+        type=str,
+        help='where to put the csv templates folder.')
 
     argcomplete.autocomplete(parser)
     return parser.parse_args()
