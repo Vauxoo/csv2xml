@@ -20,6 +20,15 @@ Coded by Katherine Zaoral <kathy@vauxoo.com>.
 Source code at lp:~vauxoo-private/vauxoo-private/data_init-dev-kty.""",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
+    # create subparsers
+    subparsers = parser.add_subparsers(
+        dest='action',
+        help='subcommands help')
+    update_parser = subparsers.add_parser(
+        'update', help='Update a module data xml files.')
+    create_parser = subparsers.add_parser(
+        'create', help='Create csv files templates.')
+
     parser.add_argument(
         'module-name',
         metavar='MODULE_NAME',
