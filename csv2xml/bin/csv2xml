@@ -32,17 +32,17 @@ Source code at lp:~vauxoo-private/vauxoo-private/data_init-dev-kty.""",
         'create', help='Create csv files templates.')
 
     update_parser.add_argument(
-        'module-name',
+        'module_name',
         metavar='MODULE_NAME',
         type=str,
         help='name of the module to be update.')
     update_parser.add_argument(
-        'csv-dir',
+        'csv_dir',
         metavar='CSV_DIR', 
         type=str,
         help='the folder where your csv and config files are.')
     create_parser.add_argument(
-        'csv-dir',
+        'csv_dir',
         metavar='CSV_DIR', 
         type=str,
         help='where to put the csv templates folder.')
@@ -72,17 +72,22 @@ def confirm_run(args):
     return True
 
 def fix_args(args):
-    args.module_name = args.module_name.replace('/', '')
     full_path = os.getcwd() + '/'
-    args.module_full_path = urljoin(full_path, args.module_name)
-    args.csv_dir_full_path = urljoin(full_path, args.csv_dir)
+    if args.action == 'update':
+        args.module_name = args.module_name.replace('/', '')
+        args.module_full_path = urljoin(full_path, args.module_name)
+    elif args.action == 'create':
+        args.csv_dir_full_path = urljoin(full_path, args.csv_dir)
     return args
 
 def main():
     args = argument_parser()
     fix_args(args)
     confirm_run(args)
+    if args.action == 'create':
+        csv2xml.create_csv_template(args)
 
+    exit()
     f = open('../src/__config__.py','r')
     d = eval(f.read())
     f.close()

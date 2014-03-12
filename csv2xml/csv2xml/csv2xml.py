@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import re
+import os
 import libxml2
 import csv
 import lxml.etree as etree
@@ -151,4 +152,15 @@ def write_xml_doc(out_doc, xml_name):
     f = open(xml_name, 'w')
     f.write(k)
     f.close()
+
+def create_csv_template(args):
+    """
+    Create a new csv directory with the templates of the csv files.
+    @return: True
+    """
+    print '... Creating the csv template'
+    print ' ---- csv.templates', args.csv_dir_full_path
+    this_dir, this_filename = os.path.split(__file__)
+    os.system('cp %s/data/csv %s -r' % (this_dir, args.csv_dir_full_path))
+
 
