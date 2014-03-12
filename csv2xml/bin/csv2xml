@@ -1,4 +1,6 @@
 #!/usr/bin/python
+# PYTHON_ARGCOMPLETE_OK
+
 import csv2xml.csv2xml as csv2xml
 from urlparse import urljoin
 import os
