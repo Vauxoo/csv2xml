@@ -31,7 +31,7 @@ Source code at lp:~vauxoo-private/vauxoo-private/data_init-dev-kty.""",
         metavar='CSV DIR', 
         type=str,
         required=True,
-        help='the folder where the csv and config files are.')
+        help='the folder where your csv and config files are.')
 
     argcomplete.autocomplete(parser)
     return parser.parse_args()
