@@ -21,10 +21,9 @@ Source code at lp:~vauxoo-private/vauxoo-private/data_init-dev-kty.""",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument(
-        '-m', '--module-name',
+        'module-name',
         metavar='MODULE_NAME',
         type=str,
-        required=True,
         help='name of the module to be update.')
     parser.add_argument(
         '-c', '--csv-dir',
