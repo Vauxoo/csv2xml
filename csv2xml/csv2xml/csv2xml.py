@@ -43,7 +43,7 @@ def set_property(type_field, value, out_field, folder = None):
 
 def genrate_xml_tree(csv_files, out_data, folder):
     for csv_name in csv_files: 
-        print ' generating the xml of %s file' % (csv_name,)
+        print ' ---- generating the xml of %s file' % (csv_name,)
         lines = csv.DictReader(open(folder + '/' + csv_name))
         line = lines.next()
         line.pop('model')
@@ -66,18 +66,19 @@ def genrate_xml_tree(csv_files, out_data, folder):
                         out_field.setContent(line[field_name])
                     out_record.addChild(out_field)
 
-def get_bank_data():
+def get_bank_data(folder):
     """
     Read the account account csv and extract a list of tuples
     [(xml_acc_id, acc_name)].
     """
-    csv_name = 'account_account/account_account.csv'
-    lines = csv.DictReader(open(csv_name))
+    csv_name = 'account_account.csv'
+    folder = folder.replace('account_journal', 'account_account')
+    lines = csv.DictReader(open('/'.join([folder, csv_name])))
     return [(line['id'], line['name'])
               for line in lines
               if line['type'] == 'liquidity']
 
-def journal_parser(out_data):
+def journal_parser(out_data, folder):
     """
     This method generate the account journals xml records taking in base the
     account account records in the account account csv of type liquidity.
@@ -89,7 +90,7 @@ def journal_parser(out_data):
     # - try to use more account numbers in the journal code.
     # - manage the uniqueness of the journal code before write the xml.
     my_model = 'account.journal'
-    bank_data = get_bank_data()
+    bank_data = get_bank_data(folder)
     pattern = re.compile(r'(cta|cuenta|cc|cte|ca|no)(\.|-)*(\s)*', re.DOTALL)
     pattern2 = re.compile(r'(\s|\.)', re.DOTALL)
     value = {
@@ -133,11 +134,11 @@ def journal_parser(out_data):
         out_data.addChild(out_record)
     return True 
 
-def aditional_parser(model_name, out_data):
+def aditional_parser(model_name, out_data, folder):
     """
     Check if there is a parser that need to be add for some models
     """
-    model_name == 'account_journal' and journal_parser(out_data)
+    model_name == 'account_journal' and journal_parser(out_data, folder)
     return True
 
 def write_xml_doc(out_doc, xml_name):
@@ -146,12 +147,12 @@ def write_xml_doc(out_doc, xml_name):
     out_doc.freeDoc()
     f.close()
 
-    print '*** generating the xml of %s file' % (xml_name,)
     x = etree.parse(xml_name)
     k = etree.tostring(x, pretty_print = True, xml_declaration=True, encoding='UTF-8')
     f = open(xml_name, 'w')
     f.write(k)
     f.close()
+    print ' **** write over %s' % (xml_name,)
 
 def create_csv_template(args):
     """
@@ -166,15 +167,15 @@ def create_csv_template(args):
 def update_xml(args):
  
     print '... Updating the data xml files.'
-    f = open( '/'.join([args.csv_dir_full_path, '__confing__.py']), 'r')
+    f = open( '/'.join([args.csv_dir_full_path, '__config__.py']), 'r')
     d = eval(f.read())
     f.close()
-    print ' ---- d', d
     print ' ---- The script is running, please wait...'
     for i in d.iteritems():
+        folder = '/'.join([args.csv_dir_full_path, i[0]])
         out_doc, out_data = initializate_xml_out()
         csv_files = i[1]
-        genrate_xml_tree(csv_files, out_data, i[0])
-        aditional_parser(i[0], out_data)
+        genrate_xml_tree(csv_files, out_data, folder)
+        aditional_parser(i[0], out_data, folder)
         write_xml_doc(out_doc, '%s/data/%s.xml' % (args.module_full_path, i[0]) )
     print ' --- The script successfully finish.' 
