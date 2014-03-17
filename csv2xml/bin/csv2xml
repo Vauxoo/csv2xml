@@ -1,17 +1,7 @@
 #!/usr/bin/python
 # PYTHON_ARGCOMPLETE_OK
-
 import csv2xml.csv2xml as csv2xml
 
 
-def main():
-    args = csv2xml.argument_parser()
-    csv2xml.fix_args(args)
-    csv2xml.confirm_run(args)
-    if args.action == 'create':
-        csv2xml.create_csv_template(args)
-    elif args.action == 'update':
-        csv2xml.update_xml(args)
-
 if __name__ == '__main__':
-    main()
+    csv2xml.cli()

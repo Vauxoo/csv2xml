@@ -256,3 +256,13 @@ def confirm_run(args):
             print 'The entry is not valid, please enter y or n.'
     return True
 
+def cli():
+    args = argument_parser()
+    fix_args(args)
+    confirm_run(args)
+    if args.action == 'create':
+        create_csv_template(args)
+    elif args.action == 'update':
+        update_xml(args)
+    return True
+
