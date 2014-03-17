@@ -2,7 +2,6 @@
 # PYTHON_ARGCOMPLETE_OK
 
 import csv2xml.csv2xml as csv2xml
-from urlparse import urljoin
 import os
 
 
@@ -27,17 +26,9 @@ def confirm_run(args):
             print 'The entry is not valid, please enter y or n.'
     return True
 
-def fix_args(args):
-    full_path = os.getcwd() + '/'
-    if args.action == 'update':
-        args.module_name = args.module_name.replace('/', '')
-        args.module_full_path = urljoin(full_path, args.module_name)
-    args.csv_dir_full_path = urljoin(full_path, args.csv_dir)
-    return args
-
 def main():
     args = csv2xml.argument_parser()
-    fix_args(args)
+    csv2xml.fix_args(args)
     confirm_run(args)
     if args.action == 'create':
         csv2xml.create_csv_template(args)

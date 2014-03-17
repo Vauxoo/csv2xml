@@ -10,6 +10,7 @@ import csv
 import lxml.etree as etree
 import pdb
 import unidecode
+from urlparse import urljoin
 
 def _get_image( name):
     fil = open(name, 'rb')
@@ -225,3 +226,11 @@ Source code at lp:~vauxoo-private/vauxoo-private/data_init-dev-kty.""",
 
     argcomplete.autocomplete(parser)
     return parser.parse_args()
+
+def fix_args(args):
+    full_path = os.getcwd() + '/'
+    if args.action == 'update':
+        args.module_name = args.module_name.replace('/', '')
+        args.module_full_path = urljoin(full_path, args.module_name)
+    args.csv_dir_full_path = urljoin(full_path, args.csv_dir)
+    return args
