@@ -1,5 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+# PYTHON_ARGCOMPLETE_OK
+import argparse
+import argcomplete
 import re
 import os
 import libxml2
@@ -179,3 +182,46 @@ def update_xml(args):
         aditional_parser(i[0], out_data, folder)
         write_xml_doc(out_doc, '%s/data/%s.xml' % (args.module_full_path, i[0]) )
     print ' --- The script successfully finish.' 
+
+def argument_parser():
+    """
+    This function create the help command line and manage and filter the
+    parameters of this program (default values, choices values)
+    """
+    parser = argparse.ArgumentParser(
+        prog='csv2xml',
+        description='Update data xml from a module via csv files.',
+        epilog="""
+Openerp Developer Comunity Tool
+Development by Vauxoo Team (lp:~vauxoo)
+Coded by Katherine Zaoral <kathy@vauxoo.com>.
+Source code at lp:~vauxoo-private/vauxoo-private/data_init-dev-kty.""",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+
+    # create subparsers
+    subparsers = parser.add_subparsers(
+        dest='action',
+        help='subcommands help')
+    update_parser = subparsers.add_parser(
+        'update', help='Update a module data xml files.')
+    create_parser = subparsers.add_parser(
+        'create', help='Create csv files templates.')
+
+    update_parser.add_argument(
+        'module_name',
+        metavar='MODULE_NAME',
+        type=str,
+        help='name of the module to be update.')
+    update_parser.add_argument(
+        'csv_dir',
+        metavar='CSV_DIR', 
+        type=str,
+        help='the folder where your csv and config files are.')
+    create_parser.add_argument(
+        'csv_dir',
+        metavar='CSV_DIR', 
+        type=str,
+        help='where to put the csv templates folder.')
+
+    argcomplete.autocomplete(parser)
+    return parser.parse_args()
