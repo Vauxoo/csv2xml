@@ -164,24 +164,24 @@ def create_csv_template(args):
     @return: True
     """
     print '... Creating the csv template'
-    print ' ---- csv.templates', args.csv_dir_full_path
+    print ' ---- csv.templates', args['csv_dir_full_path']
     this_dir, this_filename = os.path.split(__file__)
-    os.system('cp %s/data/csv %s -r' % (this_dir, args.csv_dir_full_path))
+    os.system('cp %s/data/csv %s -r' % (this_dir, args['csv_dir_full_path']))
 
 def update_xml(args):
  
     print '... Updating the data xml files.'
-    f = open( '/'.join([args.csv_dir_full_path, '__config__.py']), 'r')
+    f = open( '/'.join([args['csv_dir_full_path'], '__config__.py']), 'r')
     d = eval(f.read())
     f.close()
     print ' ---- The script is running, please wait...'
     for i in d.iteritems():
-        folder = '/'.join([args.csv_dir_full_path, i[0]])
+        folder = '/'.join([args['csv_dir_full_path'], i[0]])
         out_doc, out_data = initializate_xml_out()
         csv_files = i[1]
         genrate_xml_tree(csv_files, out_data, folder)
         aditional_parser(i[0], out_data, folder)
-        write_xml_doc(out_doc, '%s/data/%s.xml' % (args.module_full_path, i[0]) )
+        write_xml_doc(out_doc, '%s/data/%s.xml' % (args['module_full_path'], i[0]) )
     print ' --- The script successfully finish.' 
 
 def argument_parser():
@@ -229,10 +229,10 @@ Source code at lp:~vauxoo-private/vauxoo-private/data_init-dev-kty.""",
 
 def fix_args(args):
     full_path = os.getcwd() + '/'
-    if args.action == 'update':
-        args.module_name = args.module_name.replace('/', '')
-        args.module_full_path = urljoin(full_path, args.module_name)
-    args.csv_dir_full_path = urljoin(full_path, args.csv_dir)
+    if args['action'] == 'update':
+        args['module_name'] = args['module_name'].replace('/', '')
+        args['module_full_path'] = urljoin(full_path, args['module_name'])
+    args['csv_dir_full_path'] = urljoin(full_path, args['csv_dir'])
     return args
 
 def confirm_run(args):
@@ -240,7 +240,7 @@ def confirm_run(args):
     Manual confirmation before runing the script. Very usefull.
     """
     print'\n... Configuration of Parameters Set'
-    for (parameter, value) in args.__dict__.iteritems():
+    for (parameter, value) in args.iteritems():
         print '%s = %s' % (parameter, value)
 
     confirm_flag = False
@@ -258,11 +258,12 @@ def confirm_run(args):
 
 def cli():
     args = argument_parser()
+    args = args.__dict__
     fix_args(args)
     confirm_run(args)
-    if args.action == 'create':
+    if args ['action'] == 'create':
         create_csv_template(args)
-    elif args.action == 'update':
+    elif args['action'] == 'update':
         update_xml(args)
     return True
 
