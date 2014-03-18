@@ -228,9 +228,16 @@ Source code at lp:~vauxoo-private/vauxoo-private/data_init-dev-kty.""",
     return parser.parse_args()
 
 def fix_args(args):
-    full_path = os.getcwd() + '/'
     if args['action'] == 'update':
         args['module_name'] = args['module_name'].replace('/', '')
+    return args
+
+def extra_args(args):
+    """
+    Add extra args for manipalition of full path of the directories. 
+    """
+    full_path = os.getcwd() + '/'
+    if args['action'] == 'update':
         args['module_full_path'] = urljoin(full_path, args['module_name'])
     args['csv_dir_full_path'] = urljoin(full_path, args['csv_dir'])
     return args
@@ -257,6 +264,7 @@ def confirm_run(args):
     return True
 
 def run(args):
+    extra_args(args)
     if args ['action'] == 'create':
         create_csv_template(args)
     elif args['action'] == 'update':
