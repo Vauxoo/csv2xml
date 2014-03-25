@@ -82,7 +82,7 @@ def get_bank_data(folder):
               for line in lines
               if line['type'] == 'liquidity']
 
-def journal_parser(out_data, folder):
+def journal_parser(out_data, folder, args):
     """
     This method generate the account journals xml records taking in base the
     account account records in the account account csv of type liquidity.
@@ -118,7 +118,7 @@ def journal_parser(out_data, folder):
         xml_id = pattern.sub('', value['name'].lower())
         xml_id = pattern2.sub('_', xml_id)
         out_record = libxml2.newNode('record')
-        out_record.setProp('id', 'aj_mycompany_%s' % (xml_id,))
+        out_record.setProp('id', 'aj_%s_%s' % (args['company_name'], xml_id,))
         out_record.setProp('model', my_model)
 
         value['code'] = 'BJ' + xml_id.split('_')[-1][-3:]
@@ -138,11 +138,11 @@ def journal_parser(out_data, folder):
         out_data.addChild(out_record)
     return True 
 
-def aditional_parser(model_name, out_data, folder):
+def aditional_parser(model_name, out_data, folder, args):
     """
     Check if there is a parser that need to be add for some models
     """
-    model_name == 'account_journal' and journal_parser(out_data, folder)
+    model_name == 'account_journal' and journal_parser(out_data, folder, args)
     return True
 
 def write_xml_doc(out_doc, xml_name):
@@ -164,9 +164,18 @@ def create_csv_template(args):
     @return: True
     """
     print '... Creating the csv template'
-    print ' ---- csv.templates', args['csv_dir_full_path']
     this_dir, this_filename = os.path.split(__file__)
     os.system('cp %s/data/csv %s -r' % (this_dir, args['csv_dir_full_path']))
+    
+    file_list = []
+    for (dirpath, dirnames, filenames) in os.walk(args['csv_dir_full_path']):
+        for filename in filenames:
+            if filename.lower().endswith('.csv'):
+                file_list.append( '/'.join([dirpath, filename]))
+    for file_elem  in file_list:
+        os.system('sed -i \'s/mycompany/%s/g\' %s' % (args['company_name'],
+            file_elem))
+    return True
 
 def update_xml(args):
  
@@ -180,7 +189,7 @@ def update_xml(args):
         out_doc, out_data = initializate_xml_out()
         csv_files = i[1]
         genrate_xml_tree(csv_files, out_data, folder)
-        aditional_parser(i[0], out_data, folder)
+        aditional_parser(i[0], out_data, folder, args)
         write_xml_doc(out_doc, '%s/data/%s.xml' % (args['module_full_path'], i[0]) )
     print ' --- The script successfully finish.' 
 
@@ -218,11 +227,25 @@ Source code at lp:~vauxoo-private/vauxoo-private/data_init-dev-kty.""",
         metavar='CSV_DIR', 
         type=str,
         help='the folder where your csv and config files are.')
+    update_parser.add_argument(
+        '-co', '--company-name',
+        metavar='COMPANY_NAME',
+        required=True,
+        type=str,
+        help='name of the company, this will be to name some default journals.')
+
     create_parser.add_argument(
         'csv_dir',
         metavar='CSV_DIR', 
         type=str,
         help='where to put the csv templates folder.')
+    create_parser.add_argument(
+        '-co', '--company-name',
+        metavar='COMPANY_NAME',
+        required=True,
+        type=str,
+        help=('The name of your company. This name will be use to customize'
+            ' xml ids data with your company name.'))
 
     argcomplete.autocomplete(parser)
     return parser.parse_args()
