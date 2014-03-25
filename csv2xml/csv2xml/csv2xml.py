@@ -190,7 +190,7 @@ def update_xml(args):
         csv_files = i[1]
         genrate_xml_tree(csv_files, out_data, folder)
         aditional_parser(i[0], out_data, folder, args)
-        write_xml_doc(out_doc, '%s/data/%s.xml' % (args['module_full_path'], i[0]) )
+        write_xml_doc(out_doc, '%s/data/%s.xml' % (args['module_name'], i[0]) )
     print ' --- The script successfully finish.' 
 
 def argument_parser():
@@ -260,10 +260,9 @@ def dir_full_path(value):
     Calculate the dir full paths and check if exist.
     @param value: a directory path
     """
-    full_path = os.getcwd() + '/'
-    value = urljoin(full_path, value)
+    value = urljoin(os.getcwd() + '/', value)
     if not dir_exists(value):
-        msg = 'The directory given did not exist \n\t\n%s.' % value
+        msg = 'The directory given did not exist \n\n\t%s\n' % value
         raise argparse.ArgumentTypeError(msg)
     return value
 
@@ -278,15 +277,6 @@ def dir_exists(path):
 def fix_args(args):
     if args['action'] == 'update':
         args['module_name'] = args['module_name'].replace('/', '')
-    return args
-
-def extra_args(args):
-    """
-    Add extra args for manipalition of full path of the directories. 
-    """
-    full_path = os.getcwd() + '/'
-    if args['action'] == 'update':
-        args['module_full_path'] = urljoin(full_path, args['module_name'])
     return args
 
 def confirm_run(args):
@@ -311,7 +301,6 @@ def confirm_run(args):
     return True
 
 def run(args):
-    extra_args(args)
     if args ['action'] == 'create':
         create_csv_template(args)
     elif args['action'] == 'update':
