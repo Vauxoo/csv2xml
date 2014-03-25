@@ -218,13 +218,15 @@ Source code at lp:~vauxoo-private/vauxoo-private/data_init-dev-kty.""",
         'create', help='Create csv files templates.')
 
     update_parser.add_argument(
-        'module_name',
+        '-m', '--module-name',
         metavar='MODULE_NAME',
+        required=True,
         type=str,
         help='name of the module to be update.')
     update_parser.add_argument(
-        'csv_dir',
+        '-csv','--csv-dir',
         metavar='CSV_DIR', 
+        required=True,
         type=str,
         help='the folder where your csv and config files are.')
     update_parser.add_argument(
@@ -235,8 +237,9 @@ Source code at lp:~vauxoo-private/vauxoo-private/data_init-dev-kty.""",
         help='name of the company, this will be to name some default journals.')
 
     create_parser.add_argument(
-        'csv_dir',
+        '-csv','--csv-dir',
         metavar='CSV_DIR', 
+        required=True,
         type=str,
         help='where to put the csv templates folder.')
     create_parser.add_argument(
