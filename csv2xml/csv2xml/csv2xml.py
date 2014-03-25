@@ -297,7 +297,7 @@ def run(args):
         update_xml(args)
     return True
 
-def cli():
+def main():
     args = argument_parser()
     args = args.__dict__
     fix_args(args)
