@@ -165,10 +165,10 @@ def create_csv_template(args):
     """
     print '... Creating the csv template'
     this_dir, this_filename = os.path.split(__file__)
-    os.system('cp %s/data/csv %s -r' % (this_dir, args['csv_dir_full_path']))
+    os.system('cp %s/data/csv %s -r' % (this_dir, args['csv_dir']))
     
     file_list = []
-    for (dirpath, dirnames, filenames) in os.walk(args['csv_dir_full_path']):
+    for (dirpath, dirnames, filenames) in os.walk(args['csv_dir']):
         for filename in filenames:
             if filename.lower().endswith('.csv'):
                 file_list.append( '/'.join([dirpath, filename]))
@@ -180,12 +180,12 @@ def create_csv_template(args):
 def update_xml(args):
  
     print '... Updating the data xml files.'
-    f = open( '/'.join([args['csv_dir_full_path'], '__config__.py']), 'r')
+    f = open( '/'.join([args['csv_dir'], '__config__.py']), 'r')
     d = eval(f.read())
     f.close()
     print ' ---- The script is running, please wait...'
     for i in d.iteritems():
-        folder = '/'.join([args['csv_dir_full_path'], i[0]])
+        folder = '/'.join([args['csv_dir'], i[0]])
         out_doc, out_data = initializate_xml_out()
         csv_files = i[1]
         genrate_xml_tree(csv_files, out_data, folder)
@@ -287,7 +287,6 @@ def extra_args(args):
     full_path = os.getcwd() + '/'
     if args['action'] == 'update':
         args['module_full_path'] = urljoin(full_path, args['module_name'])
-    args['csv_dir_full_path'] = urljoin(full_path, args['csv_dir'])
     return args
 
 def confirm_run(args):
