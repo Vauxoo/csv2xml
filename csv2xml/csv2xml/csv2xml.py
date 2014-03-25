@@ -223,7 +223,7 @@ Source code at lp:~vauxoo-private/vauxoo-private/data_init-dev-kty.""",
         '-m', '--module-name',
         metavar='MODULE_NAME',
         required=True,
-        type=dir_full_path,
+        type=fix_module_name,
         help='name of the module to be update.')
     update_parser.add_argument(
         '-csv','--csv-dir',
@@ -255,6 +255,10 @@ Source code at lp:~vauxoo-private/vauxoo-private/data_init-dev-kty.""",
     argcomplete.autocomplete(parser)
     return parser.parse_args().__dict__
 
+def fix_module_name(value):
+    value = value.replace('/', '')
+    return dir_full_path(value)
+
 def dir_full_path(value):
     """
     Calculate the dir full paths and check if exist.
@@ -274,10 +278,6 @@ def dir_exists(path):
     return ((os.path.exists(path) and not os.path.isfile(path))
            and True or False)
 
-def fix_args(args):
-    if args['action'] == 'update':
-        args['module_name'] = args['module_name'].replace('/', '')
-    return args
 
 def confirm_run(args):
     """
@@ -309,8 +309,6 @@ def run(args):
 
 def main():
     args = argument_parser()
-    exit()
-    fix_args(args)
     confirm_run(args)
     run(args)
     return True
