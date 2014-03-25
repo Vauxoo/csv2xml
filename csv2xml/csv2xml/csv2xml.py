@@ -242,7 +242,7 @@ Source code at lp:~vauxoo-private/vauxoo-private/data_init-dev-kty.""",
         '-csv','--csv-dir',
         metavar='CSV_DIR', 
         required=True,
-        type=str,
+        type=dir_full_path,
         help='where to put the csv templates folder.')
     create_parser.add_argument(
         '-co', '--company-name',
@@ -254,6 +254,26 @@ Source code at lp:~vauxoo-private/vauxoo-private/data_init-dev-kty.""",
 
     argcomplete.autocomplete(parser)
     return parser.parse_args().__dict__
+
+def dir_full_path(value):
+    """
+    Calculate the dir full paths and check if exist.
+    @param value: a directory path
+    """
+    full_path = os.getcwd() + '/'
+    value = urljoin(full_path, value)
+    if not dir_exists(value):
+        msg = 'The CSV dir given is not a real directory path.'
+        raise argparse.ArgumentTypeError(msg)
+    return value
+
+def dir_exists(path):
+    """
+    Check is a Directory exist-
+    @return True if exist, False is not exist.
+    """
+    return ((os.path.exists(path) and not os.path.isfile(path))
+           and True or False)
 
 def fix_args(args):
     if args['action'] == 'update':
@@ -301,6 +321,7 @@ def run(args):
 
 def main():
     args = argument_parser()
+    exit()
     fix_args(args)
     confirm_run(args)
     run(args)
