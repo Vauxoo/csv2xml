@@ -223,13 +223,13 @@ Source code at lp:~vauxoo-private/vauxoo-private/data_init-dev-kty.""",
         '-m', '--module-name',
         metavar='MODULE_NAME',
         required=True,
-        type=str,
+        type=dir_full_path,
         help='name of the module to be update.')
     update_parser.add_argument(
         '-csv','--csv-dir',
         metavar='CSV_DIR', 
         required=True,
-        type=str,
+        type=dir_full_path,
         help='the folder where your csv and config files are.')
     update_parser.add_argument(
         '-co', '--company-name',
@@ -263,7 +263,7 @@ def dir_full_path(value):
     full_path = os.getcwd() + '/'
     value = urljoin(full_path, value)
     if not dir_exists(value):
-        msg = 'The CSV dir given is not a real directory path.'
+        msg = 'The directory given did not exist \n\t\n%s.' % value
         raise argparse.ArgumentTypeError(msg)
     return value
 
