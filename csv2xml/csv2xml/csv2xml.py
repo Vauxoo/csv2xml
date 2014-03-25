@@ -256,7 +256,8 @@ Source code at lp:~vauxoo-private/vauxoo-private/data_init-dev-kty.""",
     return parser.parse_args().__dict__
 
 def fix_module_name(value):
-    value = value.replace('/', '')
+    if value[-1] == '/':
+        value = value[:-1]
     return dir_full_path(value)
 
 def dir_full_path(value):
@@ -264,7 +265,8 @@ def dir_full_path(value):
     Calculate the dir full paths and check if exist.
     @param value: a directory path
     """
-    value = urljoin(os.getcwd() + '/', value)
+    full_path = os.getcwd() + '/'
+    value = urljoin(full_path , value)
     if not dir_exists(value):
         msg = 'The directory given did not exist \n\n\t%s\n' % value
         raise argparse.ArgumentTypeError(msg)
