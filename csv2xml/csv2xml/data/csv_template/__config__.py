@@ -16,9 +16,9 @@
 'islr_wh_concept': ['islr_wh_concept.csv'],
 'account_tax': ['account_tax.csv'],
 
-#'product_uom_categ': ['UOMC.csv'],
-#'product_uom': ['UOM.csv'],
-#'product_category': ['PC.csv'],
-#'product_product': ['PP.csv'],
+#'product_uom_categ': ['product_uom_categ.csv'],
+#'product_uom': ['product_uom.csv'],
+#'product_category': ['product_category.csv'],
+#'product_product': ['product_product.csv'],
 
 }
