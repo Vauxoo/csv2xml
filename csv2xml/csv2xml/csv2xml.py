@@ -193,7 +193,7 @@ def update_xml(args):
         write_xml_doc(out_doc, '%s/data/%s.xml' % (args['module_name'], i[0]) )
     print ' --- The script successfully finish.' 
 
-def argument_parser():
+def argument_parser(args_list=None):
     """
     This function create the help command line and manage and filter the
     parameters of this program (default values, choices values)
@@ -253,7 +253,7 @@ Source code at lp:~vauxoo-private/vauxoo-private/data_init-dev-kty.""",
             ' xml ids data with your company name.'))
 
     argcomplete.autocomplete(parser)
-    return parser.parse_args().__dict__
+    return parser.parse_args(args=args_list).__dict__
 
 def fix_module_name(value):
     if value[-1] == '/':
