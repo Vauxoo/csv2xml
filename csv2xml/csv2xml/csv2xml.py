@@ -162,9 +162,24 @@ def create_csv_template(args):
     """
     Create a new csv directory with the templates of the csv files.
     @return: True
+
+    >>> args = {'csv_dir': '/home/kathy/bzr_projects/temp/new_templates',
+    ...         'company_name': 'kmt'} 
+    >>> import os
+    >>> import shutil
+    >>> if os.path.exists(args['csv_dir']):
+    ...     shutil.rmtree(args['csv_dir'])
+    >>> create_csv_template(args)
+     .. Creating the csv template
+    True
+
+    >>> if os.path.exists(args['csv_dir']):
+    ...     shutil.rmtree(args['csv_dir'])
+
     """
-    print '... Creating the csv template'
-    this_dir, this_filename = os.path.split(__file__)
+    print ' .. Creating the csv template'
+    this_dir = __name__ == '__main__' and os.getcwd() \
+        or os.path.split(__file__)[0]
     os.system('cp %s/data/csv_template %s -r' % (this_dir, args['csv_dir']))
     
     file_list = []
