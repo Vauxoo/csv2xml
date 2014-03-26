@@ -162,10 +162,25 @@ def create_csv_template(args):
     """
     Create a new csv directory with the templates of the csv files.
     @return: True
+
+    >>> args = {'csv_dir': '/home/kathy/bzr_projects/temp/new_templates',
+    ...         'company_name': 'kmt'} 
+    >>> import os
+    >>> import shutil
+    >>> if os.path.exists(args['csv_dir']):
+    ...     shutil.rmtree(args['csv_dir'])
+    >>> create_csv_template(args)
+     .. Creating the csv template
+    True
+
+    >>> if os.path.exists(args['csv_dir']):
+    ...     shutil.rmtree(args['csv_dir'])
+
     """
-    print '... Creating the csv template'
-    this_dir, this_filename = os.path.split(__file__)
-    os.system('cp %s/data/csv %s -r' % (this_dir, args['csv_dir']))
+    print ' .. Creating the csv template'
+    this_dir = __name__ == '__main__' and os.getcwd() \
+        or os.path.split(__file__)[0]
+    os.system('cp %s/data/csv_template %s -r' % (this_dir, args['csv_dir']))
     
     file_list = []
     for (dirpath, dirnames, filenames) in os.walk(args['csv_dir']):
@@ -193,7 +208,7 @@ def update_xml(args):
         write_xml_doc(out_doc, '%s/data/%s.xml' % (args['module_name'], i[0]) )
     print ' --- The script successfully finish.' 
 
-def argument_parser():
+def argument_parser(args_list=None):
     """
     This function create the help command line and manage and filter the
     parameters of this program (default values, choices values)
@@ -253,22 +268,64 @@ Source code at lp:~vauxoo-private/vauxoo-private/data_init-dev-kty.""",
             ' xml ids data with your company name.'))
 
     argcomplete.autocomplete(parser)
-    return parser.parse_args().__dict__
+    return parser.parse_args(args=args_list).__dict__
 
 def fix_module_name(value):
-    value = value.replace('/', '')
+    if value[-1] == '/':
+        value = value[:-1]
     return dir_full_path(value)
 
-def dir_full_path(value):
+def dir_full_path(path):
     """
-    Calculate the dir full paths and check if exist.
-    @param value: a directory path
+    Calculate the abosulte path for a given path. It get the absolute path
+    taking into account the current path were the tool is running.
+    @param path: a directory path
+    @return: the absolute path of a directory.
+    
+    Absolute exist path
+    >>> import os
+    >>> absolute = '/home/kathy/bzr_projects/temp'
+    >>> #current = os.getcwd()
+    >>> #absolute = os.path.abspath('path-test/absolute')
+    >>> #os.makedirs(absolute)
+    >>> error = not os.path.exists(absolute) and 'The directory not exists' or False
+    >>> not error and dir_full_path(absolute) or error
+    '/home/kathy/bzr_projects/temp'
+
+    #Absolute non-exist path
+    >>> absolute = '/home/kathy/bzr_projects/temp/k'
+    >>> dir_full_path(absolute)
+    Traceback (most recent call last):
+    ArgumentTypeError: The directory given did not exist /home/kathy/bzr_projects/temp/k
+
+    #Relative foward path 
+    >>> relative_foward_path = 'data/csv_template'
+    >>> dir_full_path(relative_foward_path)
+    '/home/kathy/bzr_projects/vauxoo_private/csv2xml-rev1-kty/csv2xml/csv2xml/data/csv_template'
+
+    #Non-exist Relative foward path 
+    >>> relative_foward_path = 'kdata/csv'
+    >>> dir_full_path(relative_foward_path)
+    Traceback (most recent call last):
+    ArgumentTypeError: The directory given did not exist /home/kathy/bzr_projects/vauxoo_private/csv2xml-rev1-kty/csv2xml/csv2xml/kdata/csv
+
+    #Relative foward path
+    >>> relative_backward_path = '../../../../temp'
+    >>> dir_full_path(relative_backward_path)
+    '/home/kathy/bzr_projects/temp'
+
+    #Non-exist Relative foward path
+    >>> relative_backward_path = '../../../../tempk'
+    >>> dir_full_path(relative_backward_path)
+    Traceback (most recent call last):
+    ArgumentTypeError: The directory given did not exist /home/kathy/bzr_projects/tempk
+
     """
-    value = urljoin(os.getcwd() + '/', value)
-    if not dir_exists(value):
-        msg = 'The directory given did not exist \n\n\t%s\n' % value
+    my_path = os.path.abspath(path)
+    if not os.path.isdir(my_path):
+        msg = 'The directory given did not exist %s' % my_path
         raise argparse.ArgumentTypeError(msg)
-    return value
+    return my_path
 
 def dir_exists(path):
     """
@@ -312,3 +369,7 @@ def main():
     confirm_run(args)
     run(args)
     return True
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()
