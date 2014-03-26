@@ -165,7 +165,7 @@ def create_csv_template(args):
     """
     print '... Creating the csv template'
     this_dir, this_filename = os.path.split(__file__)
-    os.system('cp %s/data/csv %s -r' % (this_dir, args['csv_dir']))
+    os.system('cp %s/data/csv_template %s -r' % (this_dir, args['csv_dir']))
     
     file_list = []
     for (dirpath, dirnames, filenames) in os.walk(args['csv_dir']):
@@ -284,9 +284,9 @@ def dir_full_path(path):
     ArgumentTypeError: The directory given did not exist /home/kathy/bzr_projects/temp/k
 
     #Relative foward path 
-    >>> relative_foward_path = 'data/csv'
+    >>> relative_foward_path = 'data/csv_template'
     >>> dir_full_path(relative_foward_path)
-    '/home/kathy/bzr_projects/vauxoo_private/csv2xml-rev1-kty/csv2xml/csv2xml/data/csv'
+    '/home/kathy/bzr_projects/vauxoo_private/csv2xml-rev1-kty/csv2xml/csv2xml/data/csv_template'
 
     #Non-exist Relative foward path 
     >>> relative_foward_path = 'kdata/csv'
