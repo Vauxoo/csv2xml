@@ -270,12 +270,30 @@ Source code at lp:~vauxoo-private/vauxoo-private/data_init-dev-kty.""",
     argcomplete.autocomplete(parser)
     return parser.parse_args(args=args_list).__dict__
 
-def fix_module_name(value):
-    if value[-1] == '/':
-        value = value[:-1]
-    return dir_full_path(value)
+def fix_module_name(path):
+    """
+    Return the module full path, but before it checks that is a openerp module
+    with a defined data folder like the standard.
+        - Get the full path of the module and check if exsits.
+        - Check that the module have a data folder.
+    @return the full path of the module.
+    """
+    print ' ---- entre aqui'
+    path = dir_full_path(path)
+    openerp_file = os.path.join(path, '__openerp__.py')
+    if os.path.exists(openerp_file) and os.path.isfile(openerp_file):
+        pass
+    else:
+        msg = ('The given module is not a openerp module. Missing'
+                ' __openerp__.py file.')
+        raise argparse.ArgumentTypeError(msg)
+    dir_full_path(
+        os.path.join(path, 'data'),
+        ('The openerp module needs to have a data folder were to put the new'
+         ' xml data.'))
+    return path
 
-def dir_full_path(path):
+def dir_full_path(path, msg=None):
     """
     Calculate the abosulte path for a given path. It get the absolute path
     taking into account the current path were the tool is running.
@@ -323,7 +341,7 @@ def dir_full_path(path):
     """
     my_path = os.path.abspath(path)
     if not os.path.isdir(my_path):
-        msg = 'The directory given did not exist %s' % my_path
+        msg = msg or 'The directory given did not exist %s' % my_path
         raise argparse.ArgumentTypeError(msg)
     return my_path
 
