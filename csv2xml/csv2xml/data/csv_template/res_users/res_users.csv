@@ -1,2 +1,2 @@
-id,model,partner_id,login,password,company_id,groups_id,company_ids,menu_id
-str,str,ref,str,str,ref,eval,m2m,eval
+id,model,partner_id,login,password,company_id,groups_id,company_ids,menu_id,lang
+str,str,ref,str,str,ref,eval,m2m,eval,str
