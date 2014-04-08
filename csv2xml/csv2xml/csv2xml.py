@@ -256,9 +256,10 @@ Source code at lp:~vauxoo-private/vauxoo-private/data_init-dev-kty.""",
     create_parser.add_argument(
         '-csv','--csv-dir',
         metavar='CSV_DIR', 
-        required=True,
         type=dir_full_path,
-        help='where to put the csv templates folder.')
+        default=os.getcwd(),
+        help=('Where to put the csv templates folder. If not specificated'
+              ' then use the current path as base.'))
     create_parser.add_argument(
         '-co', '--company-name',
         metavar='COMPANY_NAME',
