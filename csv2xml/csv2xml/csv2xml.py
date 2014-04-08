@@ -41,6 +41,15 @@ def set_property(type_field, value, out_field, folder = None):
         und = re.compile('\n')
         binario = und.sub('', _get_image(folder +'/'+value ) )
         out_field.setContent( binario )
+    elif type_field == 'm2m':
+        ref_list = ''
+        for i in value.split(';'):
+            if ref_list is '':
+                ref_list = "[ref('{id_xml}')".format(id_xml=i)
+            else:
+                ref_list = "{lista},ref('{id_xml}')".format(lista=ref_list,id_xml=i)
+        ref_list = "[(6, 0, {lista}])]".format(lista=ref_list)       
+        out_field.setProp('eval', value)
     else:
         band = False
     return band
