@@ -16,6 +16,8 @@
 'islr_wh_concept': ['islr_wh_concept.csv'],
 'account_tax': ['account_tax.csv'],
 
+'res_users': ['res_partner.csv','res_users.csv'],
+
 #'product_uom_categ': ['product_uom_categ.csv'],
 #'product_uom': ['product_uom.csv'],
 #'product_category': ['product_category.csv'],
