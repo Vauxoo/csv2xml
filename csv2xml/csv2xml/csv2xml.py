@@ -31,8 +31,8 @@ def set_property(type_field, value, out_field, folder = None):
     band = True    
     if  type_field == 'ref':
         out_field.setProp(type_field, value)
-    elif type_field == 'eval':
-        out_field.setProp(type_field, "time.strftime('%s')" % value)
+    elif type_field == 'date':
+        out_field.setProp('eval', "time.strftime('%s')" % value)
     elif type_field ==  'evalc':
         out_field.setProp('eval', value)
     elif type_field == 'search':
