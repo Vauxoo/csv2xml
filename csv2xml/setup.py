@@ -37,6 +37,7 @@ setup(
         'data/csv_template/stock_location/*',
         'data/csv_template/stock_warehouse/*',
         'data/csv_template/res_users/*',
+        'data/csv_template/res_partner/*',
         ]},
     scripts=['bin/csv2xml'],
     #~ url='http://pypi.python.org/pypi/.../',
