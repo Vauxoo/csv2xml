@@ -1,6 +1,31 @@
 README
 ======
 
+This module python is a tool to openerp developers that permit to generate data
+xml files from csv files. This is a practical way to work with a client. The
+client give the company data in csv files and then the developer run this tool
+to generate the corresponding xml files. This tool is a time saver and also
+reduce in a big way the human errors in the data transition.
+
+Download
+--------
+
+This python module is hosted on launchpad.net repository branch. Can be
+downloaded by running this command::
+    
+    bzr branch lp:vauxoo-private/csv2xml
+
+Dependencies
+------------
+
+This module python use some imports of python modules, some of then really
+commom and another need to be found, downloaded and then installed via apt-get
+install or pip, if not, then you need to search in the web for the official
+page of the module, download the module and install it with the installation
+instruction given for the module autor. The list of python modules until the
+last versions is this: ``os``, ``argparse``, ``re``, ``libxml2``,
+``argcomplete``, ``csv``, ``lxml``, ``shutil``, ``doctest`` and ``unidecode``.
+
 Install
 -------
 
@@ -32,7 +57,6 @@ will display the script options::
         - Saul Gonzanlez <saul@vauxoo.com>.
     Source code at lp:vauxoo-private/csv2xml
 
-
 Configure
 ---------
 
@@ -57,6 +81,12 @@ the csv path were youre csv data is::
 
     $ csv2xml update -m <module-folder-path> -csv <csv-folder-path> \
     -co <company-acronym>
+
+Documentation
+-------------
+
+The detail documentation about this tool can be found inside the vauxoo
+documentation branch in the section CSV Tools.
 
 Uninstall
 ---------
