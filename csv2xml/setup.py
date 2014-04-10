@@ -9,6 +9,22 @@ except ImportError:
     # 2.x
     from distutils.command.build_py import build_py
 
+try:
+    import os
+    import argparse
+    import argcomplete
+    import re
+    import libxml2
+    import csv
+    import lxml
+    import unidecode
+    import shutil
+    import doctest
+    import urljoin
+
+except ImportError, e:
+    raise Exception("{}. You must install the missed python module to use csv2xml module.".format(e)) 
+
 cmdclass = {'build_py': build_py}
 command_options = {}
 
