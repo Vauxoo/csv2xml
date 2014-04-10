@@ -20,8 +20,6 @@ try:
     import unidecode
     import shutil
     import doctest
-    import urljoin
-
 except ImportError, e:
     raise Exception("{}. You must install the missed python module to use csv2xml module.".format(e)) 
 
