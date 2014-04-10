@@ -8,7 +8,6 @@ import os
 import libxml2
 import csv
 import lxml.etree as etree
-import pdb
 import unidecode
 from urlparse import urljoin
 
