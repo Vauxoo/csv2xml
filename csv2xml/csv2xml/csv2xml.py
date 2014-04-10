@@ -9,7 +9,6 @@ import libxml2
 import csv
 import lxml.etree as etree
 import unidecode
-from urlparse import urljoin
 
 def _get_image( name):
     fil = open(name, 'rb')
