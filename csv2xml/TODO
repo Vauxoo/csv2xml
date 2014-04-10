@@ -1,6 +1,10 @@
 TODO
 ====
 
-- item 1
+- make that the csv template folder can be geneerated with a custom name
+  instead of always use ``csv_template``.
+- define a new process 1) take the module attribute and update the module
+  descriptor with the new xml data generated. 2) remove the module attribute
+  and only manage a output path for the generated xml.
 
 # vim:filetype=rst:
