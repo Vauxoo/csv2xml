@@ -8,9 +8,7 @@ import os
 import libxml2
 import csv
 import lxml.etree as etree
-import pdb
 import unidecode
-from urlparse import urljoin
 
 def _get_image( name):
     fil = open(name, 'rb')
@@ -219,11 +217,14 @@ def argument_parser(args_list=None):
         prog='csv2xml',
         description='Update data xml from a module via csv files.',
         epilog="""
-Openerp Developer Comunity Tool
-Development by Vauxoo Team (lp:~vauxoo)
-Coded by Katherine Zaoral <kathy@vauxoo.com>.
-Source code at lp:~vauxoo-private/vauxoo-private/data_init-dev-kty.""",
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+Openerp Developer Comunity Tool Development by Vauxoo Team (lp:~vauxoo)
+Coded by:
+    - Katherine Zaoral <kathy@vauxoo.com>,
+    - Yanina Aular <yanina@vauxoo.com>,
+    - Saul Gonzanlez <saul@vauxoo.com>.
+Source code at lp:vauxoo-private/csv2xml
+""",
+        formatter_class=argparse.RawDescriptionHelpFormatter)
 
     # create subparsers
     subparsers = parser.add_subparsers(
