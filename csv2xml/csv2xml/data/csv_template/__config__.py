@@ -1,6 +1,7 @@
 {
 'account_account_type': ['account_account_type.csv'],
 'account_account': ['account_account.csv'],
+'payment_term' : ['payment_term.csv', 'account_payment_term_line.csv'],
 
 'res_currency': ['res_currency.csv','res_currency_rate.csv'],
 'res_company': ['res_country_state.csv','res_partner.csv','res_company.csv'],

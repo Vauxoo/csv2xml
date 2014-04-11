@@ -40,6 +40,7 @@ setup(
         'data/csv_template/res_users/*',
         'data/csv_template/res_partner/*',
         'data/csv_template/res_country_state/*',
+        'data/csv_template/payment_term/*',
         ]},
     scripts=['bin/csv2xml'],
     #~ url='http://pypi.python.org/pypi/.../',
