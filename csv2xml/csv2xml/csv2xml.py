@@ -37,6 +37,8 @@ def set_property(type_field, value, out_field, folder = None):
         out_field.setProp('eval', value)
     elif type_field == 'search':
         out_field.setProp(type_field, "[('code', '=', '%s')]" % value)
+    elif type_field == 'searchname':
+        out_field.setProp('search', "[('name', '=', '%s')]" % value)
     elif type_field == 'bin':
         und = re.compile('\n')
         binario = und.sub('', _get_image(folder +'/'+value ) )
