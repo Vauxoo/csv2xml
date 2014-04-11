@@ -1,0 +1,4 @@
+id,model,name,active,type
+str,str,str,evalc,str
+pricelist_001,product.pricelist,Ejemplo Pricelist 001,True,sale
+pricelist_002,product.pricelist,Ejemplo Pricelist 002,False,purchase

@@ -30,6 +30,7 @@ setup(
         'data/csv_template/product_product/*',
         'data/csv_template/product_uom/*',
         'data/csv_template/product_uom_categ/*',
+        'data/csv_template/product_pricelist/*',
         'data/csv_template/res_bank/*',
         'data/csv_template/res_company/*',
         'data/csv_template/res_currency/*',
