@@ -16,7 +16,8 @@
 'islr_wh_concept': ['islr_wh_concept.csv'],
 'account_tax': ['account_tax.csv'],
 
-'res_partner' : ['res_country_state.csv','res_partner.csv','res_partner_bank.csv'],
+'res_country_state' : ['res_country_state'],
+'res_partner' : ['res_partner.csv','res_partner_bank.csv'],
 
 'res_users': ['res_partner.csv','res_users.csv'],
 
