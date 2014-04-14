@@ -23,7 +23,7 @@
 'res_company': ['res_partner.csv','res_company.csv'],
 'res_users': ['res_users.csv'],
 
-'hr_employee': ['hr_job.csv', 'hr_department.csv', 'hr_employee.csv']
+'hr': ['hr_job.csv', 'hr_department.csv', 'hr_employee.csv']
 
 #'product_uom_categ': ['product_uom_categ.csv'],
 #'product_uom': ['product_uom.csv'],
