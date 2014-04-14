@@ -51,7 +51,7 @@ def set_property(type_field, value, out_field, folder = None):
             else:
                 ref_list = "{lista},ref('{id_xml}')".format(lista=ref_list,id_xml=i)
         ref_list = "[(6, 0, {lista}])]".format(lista=ref_list)       
-        out_field.setProp('eval', value)
+        out_field.setProp('eval', ref_list)
     else:
         band = False
     return band
