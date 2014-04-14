@@ -1,0 +1,4 @@
+id,model,name
+str,str,str
+hr_job_001,hr.job,Job 1
+hr_job_002,hr.job,Job 2
