@@ -1,3 +1,3 @@
-id,model,name,company_id,address_id,work_email,mobile_phone,work_location,user_id,account_analytic_id,department_id,job_id,manager_id,country_id,identification_id,passport_id,address_home_id,gender,birthday
-str,str,str,ref,ref,str,str,str,ref,searchname,searchname,searchname,searchname,search,str,str,ref,str,date
-hr_employee_001,hr.employee,Ejemplo Empleado 01,base.main_company,,,,,res_user_001,,Departamento 1,Job 1,,VE,V567456,123456789012,,male,19-12-1992
+id,model,name,company_id,address_id,work_email,mobile_phone,work_location,user_id,account_analytic_id,department_id,job_id,manager_id,country_id,identification_id,passport_id,address_home_id,gender,birthday,category_ids
+str,str,str,ref,ref,str,str,str,ref,searchname,searchname,searchname,searchname,search,str,str,ref,str,date,m2m
+hr_employee_001,hr.employee,Ejemplo Empleado 01,base.main_company,,,,,res_user_001,,Departamento 1,Job 1,,VE,V567456,123456789012,,male,19-12-1992,hr_employee_category_001;hr_employee_category_002
