@@ -1,2 +1,3 @@
-id,model,partner_id,login,password,company_id,groups_id,company_ids,menu_id,lang
-str,str,ref,str,str,ref,m2m,m2m,ref,str
+id,model,login,password,company_id,groups_id,company_ids,menu_id,lang,name
+str,str,str,str,ref,m2m,m2m,ref,str
+res_user_001,res.users,login_001,,base.main_company,,,,en_US,Juan Petronilo
