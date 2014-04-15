@@ -1,0 +1,4 @@
+id,model,department_id
+str,str,ref
+hr_job_001,hr.job,hr_department_001
+hr_job_002,hr.job,
