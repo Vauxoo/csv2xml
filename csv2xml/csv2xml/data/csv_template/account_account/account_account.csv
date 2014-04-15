@@ -1,2 +1,5 @@
 id,model,code,name,parent_id,type,user_type,reconcile
 str,str,str,str,search,str,ref,str
+aa_coa_000,account.account,0,Company,,view,aat_estructura,0
+aa_coa_001,account.account,1,ACTIVO,0,view,aat_estructura,0
+aa_coa_002,account.account,11,Efectivo y sus equivalentes,1,view,aat_estructura,0
