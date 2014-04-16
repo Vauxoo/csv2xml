@@ -1,3 +1,3 @@
 id,model,name,rml_header1,wh_src_collected_account_id,wh_src_paid_account_id
 str,str,str,str,search,search
-res_company_001,res.company,Compañia Ejemplo 001,,,
+base.main_company,res.company,Compañia Ejemplo 001,,,
