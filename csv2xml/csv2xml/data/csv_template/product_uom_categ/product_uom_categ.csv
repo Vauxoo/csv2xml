@@ -1,2 +1,3 @@
 id,model,name
 str,str,str
+product_uom_categ_001,product.uom.categ,Intensidad Luminosa
