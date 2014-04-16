@@ -27,11 +27,8 @@
 'res_company': ['res_partner.csv','res_company.csv'],
 'res_users': ['res_users.csv'],
 
-'hr': ['hr_employee_category.csv', 'hr_job.csv', 'hr_department.csv', 'hr_employee.csv', 'hr_department_2.csv', 'hr_job_2.csv']
+'hr': ['hr_employee_category.csv', 'hr_job.csv', 'hr_department.csv', 'hr_employee.csv', 'hr_department_2.csv', 'hr_job_2.csv'],
 
-#'product_uom_categ': ['product_uom_categ.csv'],
-#'product_uom': ['product_uom.csv'],
-#'product_category': ['product_category.csv'],
-#'product_product': ['product_product.csv'],
+'stock_warehouse_orderpoint' : ['stock_warehouse_orderpoint.csv'],
 
 }

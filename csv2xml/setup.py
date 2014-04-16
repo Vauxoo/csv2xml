@@ -42,6 +42,7 @@ setup(
         'data/csv_template/res_country_state/*',
         'data/csv_template/payment_term/*',
         'data/csv_template/hr/*',
+        'data/csv_template/stock_warehouse_orderpoint/*',
         ]},
     scripts=['bin/csv2xml'],
     #~ url='http://pypi.python.org/pypi/.../',
