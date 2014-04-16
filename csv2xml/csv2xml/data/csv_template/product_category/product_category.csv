@@ -1,1 +1,3 @@
 id,model,name,type,parent_id,property_account_expense_categ,property_stock_journal,property_stock_account_input_categ,property_account_income_categ,property_account_creditor_price_difference_categ,property_stock_valuation_account_id,property_stock_account_output_categ
+str,str,str,str,ref,ref,ref,ref,ref,ref,ref,ref
+product_category_001,product.category,Perecederos,normal,product.product_category_all,aa_coa_006,,aa_coa_002,aa_coa_005,aa_coa_005,
