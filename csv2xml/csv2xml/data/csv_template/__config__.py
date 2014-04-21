@@ -31,5 +31,6 @@
 'hr': ['hr_employee_category.csv', 'hr_job.csv', 'hr_department.csv', 'hr_employee.csv', 'hr_department_2.csv', 'hr_job_2.csv'],
 
 'stock_warehouse_orderpoint' : ['stock_warehouse_orderpoint.csv'],
+'ir_mail_server' : ['ir_mail_server.csv'],
 
 }
