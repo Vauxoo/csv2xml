@@ -1,4 +1,5 @@
 {
+'ir_sequence': ['ir_sequence_type.csv','ir_sequence.csv'],
 'account_account_type': ['account_account_type.csv'],
 'account_account': ['account_account.csv'],
 'payment_term' : ['payment_term.csv', 'account_payment_term_line.csv'],

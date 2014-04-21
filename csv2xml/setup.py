@@ -43,6 +43,7 @@ setup(
         'data/csv_template/payment_term/*',
         'data/csv_template/hr/*',
         'data/csv_template/stock_warehouse_orderpoint/*',
+        'data/csv_template/ir_sequence/*',
         ]},
     scripts=['bin/csv2xml'],
     #~ url='http://pypi.python.org/pypi/.../',

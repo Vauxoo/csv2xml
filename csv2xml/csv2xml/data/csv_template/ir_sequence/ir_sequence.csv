@@ -1,0 +1,3 @@
+id,model,name,prefix,padding,company_id,code,number_increment,number_next,implementation,active
+str,str,str,str,evalc,ref,str,str,str,str,evalc
+ir_sequence_001,ir.sequence,Sequence 001,SEQ %(day)s %(month)s %(year)s,0,base.main_company,nombre.modulo,1,1,standard,True
