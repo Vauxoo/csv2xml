@@ -27,6 +27,7 @@
 'res_partner' : ['res_partner.csv','res_partner_bank.csv'],
 'res_company': ['res_partner.csv','res_company.csv'],
 'res_users': ['res_users.csv'],
+'res_groups': ['res_groups.csv'],
 
 'hr': ['hr_employee_category.csv', 'hr_job.csv', 'hr_department.csv', 'hr_employee.csv', 'hr_department_2.csv', 'hr_job_2.csv'],
 
