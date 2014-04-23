@@ -1,0 +1,3 @@
+id,model,name,date,type,server,port,is_ssl,user,password,object_id,action_id,priority
+str,str,str,date,str,str,str,evalc,str,str,searchname,searchname,str
+fetchmail_server_001,fetchmail.server,Prueba 001,%Y-%m-%d,pop,Server name,110,False,user,password,,,1

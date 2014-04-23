@@ -33,5 +33,6 @@
 
 'stock_warehouse_orderpoint' : ['stock_warehouse_orderpoint.csv'],
 'ir_mail_server' : ['ir_mail_server.csv'],
+'fetchmail_server' : ['fetchmail_server.csv']
 
 }
