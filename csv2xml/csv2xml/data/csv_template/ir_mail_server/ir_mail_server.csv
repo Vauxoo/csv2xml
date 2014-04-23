@@ -1,4 +1,3 @@
 id,model,name,sequence,smtp_encryption,smtp_host,smtp_pass,smtp_port,smtp_user,smtp_debug
 str,str,str,str,str,str,str,str,str,evalc
-ir_mail_server_001,ir.mail_server,Mail Server 001,1,ssl,smtp.gmail.com,,465,correo@gmail.com,False
 

@@ -1,3 +1,2 @@
 id,model,bank,acc_number,state,partner_id
 str,str,ref,str,str,ref
-res_partner_bank_001,res.partner.bank,rb_mycompany_venezuela,5555-5555,bank,P_001

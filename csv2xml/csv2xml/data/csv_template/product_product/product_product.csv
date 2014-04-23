@@ -1,3 +1,2 @@
 id,model,product_tmpl_id,sale_ok,purchase_ok,standard_price,description
 str,str,ref,evalc,evalc,str,str
-product_product_001,product.product,product_template_001,True,False,45,Descripcion Aqui

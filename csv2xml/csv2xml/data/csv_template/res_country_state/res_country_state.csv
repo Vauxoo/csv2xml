@@ -1,3 +1,2 @@
 id,model,name,code,country_id
 str,str,str,str,search
-state_001,res.country.state,Carabobo,CB,VE

@@ -1,3 +1,2 @@
 id,model,name,categ_id,type,uom_id,procure_method,supply_method,cost_method,uom_po_id,valuation
 str,str,str,ref,str,searchname,str,str,str,searchname,str
-product_template_001,product.template,Producto 1,product_category_001,consu,Dozen(s),make_to_stock,buy,average,Unit(s),real_time

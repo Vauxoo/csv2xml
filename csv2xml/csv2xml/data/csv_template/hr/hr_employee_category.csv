@@ -1,6 +1,2 @@
 id,model,name,parent_id
 str,str,str,ref
-hr_employee_category_001,hr.employee.category,Category 1,
-hr_employee_category_002,hr.employee.category,Category 2,
-hr_employee_category_003,hr.employee.category,Category 3,hr_employee_category_001
-

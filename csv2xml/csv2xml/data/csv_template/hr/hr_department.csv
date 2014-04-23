@@ -1,4 +1,2 @@
 id,model,company_id,name,parent_id
 str,str,ref,str,ref
-hr_department_001,hr.department,base.main_company,Departamento 1,
-hr_department_002,hr.department,base.main_company,Departamento 2,hr_department_001

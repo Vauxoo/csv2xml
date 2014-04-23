@@ -1,4 +1,3 @@
 id,model,company_id,lot_input_id,lot_output_id,lot_stock_id,name
 str,str,ref,ref,ref,ref,str
 stock.warehouse0,stock.warehouse,,,,,WAREHOUSE COMPANY
-stock_warehouse_001,stock.warehouse,,,,,WAREHOUSE 001
