@@ -1,0 +1,2 @@
+id,model,name,users
+str,str,str,m2m

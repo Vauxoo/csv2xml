@@ -1,0 +1,2 @@
+id,model,name,min_quantity,sequence,base,price_version_id
+str,str,str,str,str,evalc,ref

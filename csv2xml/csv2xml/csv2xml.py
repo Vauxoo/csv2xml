@@ -29,16 +29,27 @@ def set_property(type_field, value, out_field, folder = None):
     band = True    
     if  type_field == 'ref':
         out_field.setProp(type_field, value)
-    elif type_field == 'eval':
-        out_field.setProp(type_field, "time.strftime('%s')" % value)
+    elif type_field == 'date':
+        out_field.setProp('eval', "time.strftime('%s')" % value)
     elif type_field ==  'evalc':
         out_field.setProp('eval', value)
     elif type_field == 'search':
         out_field.setProp(type_field, "[('code', '=', '%s')]" % value)
+    elif type_field == 'searchname':
+        out_field.setProp('search', "[('name', '=', '%s')]" % value)
     elif type_field == 'bin':
         und = re.compile('\n')
         binario = und.sub('', _get_image(folder +'/'+value ) )
         out_field.setContent( binario )
+    elif type_field == 'm2m':
+        ref_list = ''
+        for i in value.split(';'):
+            if ref_list is '':
+                ref_list = "[ref('{id_xml}')".format(id_xml=i)
+            else:
+                ref_list = "{lista},ref('{id_xml}')".format(lista=ref_list,id_xml=i)
+        ref_list = "[(6, 0, {lista}])]".format(lista=ref_list)       
+        out_field.setProp('eval', ref_list)
     else:
         band = False
     return band

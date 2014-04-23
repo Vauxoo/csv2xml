@@ -1,5 +1,5 @@
-id,model,name,code,type,company_id,
-str,str,str,str,str,ref,
+id,model,name,code,type,company_id
+str,str,str,str,str,ref
 aj_mycompany_opening,account.journal,Diario de Apertura,DA,situation,base.main_company
 aj_mycompany_purchase,account.journal,Diario de Compra,DC,purchase,base.main_company
 aj_mycompany_writeoff,account.journal,Diario de Diferencias,DD,general,base.main_company

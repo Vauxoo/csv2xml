@@ -1,0 +1,2 @@
+id,model,name,company_id,active,product_id,warehouse_id,product_uom,location_id,product_min_qty,product_max_qty,qty_multiple
+str,str,str,ref,evalc,ref,ref,searchname,ref,str,str,str

@@ -1,5 +1,5 @@
 id,model,rate,currency_id,name
-str,str,str,ref,eval
-base.rateEUR,res.currency.rate,1.0,base.EUR,%Y-01-01,
-base.rateVEF,res.currency.rate,0.117096,base.VEF,%Y-01-01,
-base.rateUSD,res.currency.rate,0.158730,base.USD,%Y-01-01,
+str,str,str,ref,date
+base.rateEUR,res.currency.rate,1.0,base.EUR,%Y-01-01
+base.rateVEF,res.currency.rate,0.117096,base.VEF,%Y-01-01
+base.rateUSD,res.currency.rate,0.158730,base.USD,%Y-01-01

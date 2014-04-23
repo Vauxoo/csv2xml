@@ -1,2 +1,3 @@
-"id","model","name","usage","chained_location_type","chained_auto_packing","company_id","location_id"
+id,model,name,usage,chained_location_type,chained_auto_packing,company_id,location_id
 str,str,str,str,str,str,ref,ref
+stock.stock_location_company,stock.location,STOCK LOCATION COMPANY
