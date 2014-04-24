@@ -33,6 +33,8 @@ setup(
     author_email='info@vauxoo.com',
     packages=['csv2xml'],
     package_data={'csv2xml': [
+        'data/data_key',
+        'data/depends_key',
         'data/csv_template/__config__.py',
         'data/csv_template/account_account/*',
         'data/csv_template/account_account_type/*',

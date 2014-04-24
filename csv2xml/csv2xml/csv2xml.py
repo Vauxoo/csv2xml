@@ -215,7 +215,102 @@ def update_xml(args):
         genrate_xml_tree(csv_files, out_data, folder)
         aditional_parser(i[0], out_data, folder, args)
         write_xml_doc(out_doc, '%s/data/%s.xml' % (args['module_name'], i[0]) )
+
+    print '... Update the module descriptor with the new data'
+    update_file = '__openerp__.py'
+    hard_update_file(args, update_file, 'data')
+    hard_update_file(args, update_file, 'depends')
+
     print ' --- The script successfully finish.' 
+
+def hard_update_file(args, update_file, openerp_key):
+    """
+    Read a file, get the string version of it, and then replace once
+    portion of the string with another one and overwrite the file with this
+    new change.
+    @param args: this run arguments.
+    @param update_file: the name of the file to change.
+    @param openerp_key: the key name that will be update in the module
+                        descriptor (in __openerp__.py).
+    @return True
+    """
+    path = args['module_name'] 
+    file_path = os.path.join(path, update_file)
+    with open(file_path, 'r') as f:
+        file_str = f.read()
+
+    pattern = "(?P<base>[\"']{}[\"']\s*:\s*\[)(?P<cnt>(\n*[^\]]*)*)(?P<end>\]\s*,)".format(openerp_key)
+    rp = re.compile(pattern)
+    cr_data = rp.search(file_str).group('cnt')
+    result = rp.sub(
+        '\g<base>{data}\g<end>'.format(
+            data=get_key_value(args, openerp_key, cr_data)), file_str)
+
+    with open(file_path, 'w') as f:
+        f.write(result)
+    return True
+
+def get_list_from_str(str_values):
+    """
+    Transforms the string with the values of the an openerp key (descriptor of
+    a openerp module) and return a list of strings of the elements.
+    @param str_values: string with the content of the openerp key (string).
+    @return a list of strings with the content data (list).
+    """
+    for item in ['"', '\'', ',']:
+        str_values = str_values.replace(item, '')
+    return str_values.split()
+
+def get_str_from_list(list_data):
+    """
+    Transforms a list into a string.
+    @param list_data: list of string to convert.
+    @return string with a form like a list
+    """
+    str_data = str()
+    for item in list_data:
+        str_data += '\n        \'%s\',' % (item)
+    str_data = str_data[:-1]
+    return str_data
+
+def get_main_script_dir():
+    """
+    Get the path of the script that is runing.
+    @return the full path of the current script (string).
+    """
+    return __name__ == '__main__' and os.getcwd() \
+        or os.path.split(__file__)[0]
+
+def get_key_value(args, openerp_key, cr_data):
+    """
+    Read the current data for a key in the user module descriptor, read the
+    neccesaries keys to be add and then add the ones who are missing.
+    @param openerp_key: the key name that will be update in the module
+                        descriptor (in __openerp__.py).
+    @param cr_data: string of the values inside the openerp key given.
+    @return an string that will be replace the value of openerp_key given.
+    """
+    cr_data = get_list_from_str(cr_data)
+    required_data = get_str_data(args, openerp_key)
+
+    for item in required_data:
+        if item in cr_data:
+            cr_data.remove(item)
+
+    new_data = required_data + cr_data
+    return get_str_from_list(new_data)
+
+def get_str_data(args, openerp_key):
+    """
+    @return a list of strings with the new required values of the openerp key
+    in the openerp descriptor file. 
+    """
+    data_file = '{path}/data/{key}_key'.format(
+        path=get_main_script_dir(), key=openerp_key)
+    with open(data_file, 'r') as f:
+        file_str = f.readlines()
+    file_str = [item.replace('\n','') for item in file_str]
+    return file_str
 
 def argument_parser(args_list=None):
     """
