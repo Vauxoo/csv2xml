@@ -259,6 +259,10 @@ def get_list_from_str(str_values):
     """
     for item in ['"', '\'', ',']:
         str_values = str_values.replace(item, '')
+
+    # delete comments inside the keys 
+    rp = re.compile('(?P<data>.*)(?P<comment>#.*\n)')
+    str_values = rp.sub('', str_values)
     return str_values.split()
 
 def get_str_from_list(list_data):
