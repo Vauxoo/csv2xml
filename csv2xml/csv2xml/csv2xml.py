@@ -188,9 +188,7 @@ def create_csv_template(args):
 
     """
     print ' .. Creating the csv template'
-    this_dir = __name__ == '__main__' and os.getcwd() \
-        or os.path.split(__file__)[0]
-    os.system('cp %s/data/csv_template %s -r' % (this_dir, args['csv_dir']))
+    os.system('cp %s/data/csv_template %s -r' % (get_main_script_dir(), args['csv_dir']))
     
     file_list = []
     for (dirpath, dirnames, filenames) in os.walk(args['csv_dir']):
