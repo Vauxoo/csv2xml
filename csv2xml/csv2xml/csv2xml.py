@@ -9,6 +9,7 @@ import libxml2
 import csv
 import lxml.etree as etree
 import unidecode
+import json
 
 def _get_image( name):
     fil = open(name, 'rb')
@@ -295,7 +296,7 @@ def get_key_value(args, openerp_key, cr_data):
     @return an string that will be replace the value of openerp_key given.
     """
     cr_data = get_list_from_str(cr_data)
-    required_data = get_str_data(args, openerp_key)
+    required_data = get_str_data(openerp_key)
 
     for item in required_data:
         if item in cr_data:
@@ -304,17 +305,16 @@ def get_key_value(args, openerp_key, cr_data):
     new_data = required_data + cr_data
     return get_str_from_list(new_data)
 
-def get_str_data(args, openerp_key):
+def get_str_data(openerp_key):
     """
     @return a list of strings with the new required values of the openerp key
     in the openerp descriptor file. 
     """
-    data_file = '{path}/data/{key}_key'.format(
-        path=get_main_script_dir(), key=openerp_key)
+    data_file = '{path}/data/openerp_key.json'.format(
+        path=get_main_script_dir())
     with open(data_file, 'r') as f:
-        file_str = f.readlines()
-    file_str = [item.replace('\n','') for item in file_str]
-    return file_str
+        data = json.load(f)
+    return data[openerp_key]
 
 def argument_parser(args_list=None):
     """
