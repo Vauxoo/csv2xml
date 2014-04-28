@@ -1,2 +1,0 @@
-id,model,name,street,street2,city,zip,country_id,state_id,vat,phone,fax,website,email,image,notification_email_send
-str,str,str,str,str,str,str,search,ref,str,str,str,str,str,bin,str
