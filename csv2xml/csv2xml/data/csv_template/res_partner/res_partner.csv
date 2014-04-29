@@ -1,2 +1,2 @@
 id,model,name,street,street2,city,zip,country_id,state_id,vat,phone,mobile,title,function,fax,website,email,lang,active,ref,property_product_pricelist_purchase,property_product_pricelist,property_payment_term,property_supplier_payment_term,supplier,customer,property_account_receivable,property_account_payable,company_id,image
-str,str,str,str,str,str,str,search,search,str,str,str,searchname,str,str,str,str,str,eval,str,evalc,evalc,evalc,evalc,evalc,evalc,search,search,ref,bin
+str,str,str,str,str,str,str,search,search,str,str,str,searchname,str,str,str,str,str,evalc,str,evalc,evalc,evalc,evalc,evalc,evalc,search,search,ref,bin
