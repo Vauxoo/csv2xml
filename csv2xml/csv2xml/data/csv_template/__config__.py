@@ -25,7 +25,7 @@
 
 'res_country_state' : ['res_country_state.csv'],
 'res_partner' : ['res_partner.csv','res_partner_bank.csv'],
-'res_company': ['res_partner.csv','res_company.csv'],
+'res_company': ['res_company.csv'],
 'res_users': ['res_users.csv'],
 'res_groups': ['res_groups.csv'],
 
