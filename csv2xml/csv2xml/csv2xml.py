@@ -172,20 +172,6 @@ def create_csv_template(args):
     """
     Create a new csv directory with the templates of the csv files.
     @return: True
-
-    >>> args = {'csv_dir': '/home/kathy/bzr_projects/temp/new_templates',
-    ...         'company_name': 'kmt'} 
-    >>> import os
-    >>> import shutil
-    >>> if os.path.exists(args['csv_dir']):
-    ...     shutil.rmtree(args['csv_dir'])
-    >>> create_csv_template(args)
-     .. Creating the csv template
-    True
-
-    >>> if os.path.exists(args['csv_dir']):
-    ...     shutil.rmtree(args['csv_dir'])
-
     """
     print ' .. Creating the csv template'
     os.system('cp {path}/data/csv_template {new_folder} -r'.format(
@@ -404,45 +390,6 @@ def dir_full_path(path, msg=None):
     taking into account the current path were the tool is running.
     @param path: a directory path
     @return: the absolute path of a directory.
-    
-    Absolute exist path
-    >>> import os
-    >>> absolute = '/home/kathy/bzr_projects/temp'
-    >>> #current = os.getcwd()
-    >>> #absolute = os.path.abspath('path-test/absolute')
-    >>> #os.makedirs(absolute)
-    >>> error = not os.path.exists(absolute) and 'The directory not exists' or False
-    >>> not error and dir_full_path(absolute) or error
-    '/home/kathy/bzr_projects/temp'
-
-    #Absolute non-exist path
-    >>> absolute = '/home/kathy/bzr_projects/temp/k'
-    >>> dir_full_path(absolute)
-    Traceback (most recent call last):
-    ArgumentTypeError: The directory given did not exist /home/kathy/bzr_projects/temp/k
-
-    #Relative foward path 
-    >>> relative_foward_path = 'data/csv_template'
-    >>> dir_full_path(relative_foward_path)
-    '/home/kathy/bzr_projects/vauxoo_private/csv2xml-rev1-kty/csv2xml/csv2xml/data/csv_template'
-
-    #Non-exist Relative foward path 
-    >>> relative_foward_path = 'kdata/csv'
-    >>> dir_full_path(relative_foward_path)
-    Traceback (most recent call last):
-    ArgumentTypeError: The directory given did not exist /home/kathy/bzr_projects/vauxoo_private/csv2xml-rev1-kty/csv2xml/csv2xml/kdata/csv
-
-    #Relative foward path
-    >>> relative_backward_path = '../../../../temp'
-    >>> dir_full_path(relative_backward_path)
-    '/home/kathy/bzr_projects/temp'
-
-    #Non-exist Relative foward path
-    >>> relative_backward_path = '../../../../tempk'
-    >>> dir_full_path(relative_backward_path)
-    Traceback (most recent call last):
-    ArgumentTypeError: The directory given did not exist /home/kathy/bzr_projects/tempk
-
     """
     my_path = os.path.abspath(path)
     if not os.path.isdir(my_path):
