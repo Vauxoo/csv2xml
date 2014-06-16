@@ -120,7 +120,7 @@ def journal_parser(out_data, folder, args):
         'company_id': 'ref',
     }
 
-    for line in bank_data:
+    for (index, line) in enumerate(bank_data, 1):
         value['name'] = unicode(line[-1], 'utf-8')
         value['name'] = unidecode.unidecode(value['name'])
         value['default_credit_account_id'] = line[0]
@@ -128,10 +128,9 @@ def journal_parser(out_data, folder, args):
         xml_id = pattern.sub('', value['name'].lower())
         xml_id = pattern2.sub('_', xml_id)
         out_record = libxml2.newNode('record')
-        out_record.setProp('id', 'aj_%s_%s' % (args['company_name'], xml_id,))
+        out_record.setProp('id', 'aj_{}_{}'.format(args['company_name'], line[0]))
         out_record.setProp('model', my_model)
-
-        value['code'] = 'BJ' + xml_id.split('_')[-1][-3:]
+        value['code'] = 'BJ{0:03d}'.format(index) 
 
         for aj_field in value.keys():
             out_field = libxml2.newNode('field')
