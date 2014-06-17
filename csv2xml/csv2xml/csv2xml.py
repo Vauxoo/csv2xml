@@ -82,13 +82,13 @@ def genrate_xml_tree(csv_files, out_data, folder):
 
 def get_bank_data(folder):
     """
-    Read the account account csv and extract a list of tuples
-    [(xml_acc_id, acc_name)].
+    Read the account account csv and extract a list of dictionariers with the
+    keys ['aa_xml_id', 'aa_name'].
     """
     csv_name = 'account_account.csv'
     folder = folder.replace('account_journal', 'account_account')
     lines = csv.DictReader(open('/'.join([folder, csv_name])))
-    return [(line['id'], line['name'])
+    return [{'aa_xml_id': line['id'], 'aa_name': line['name']}
               for line in lines
               if line['type'] == 'liquidity']
 
@@ -121,14 +121,15 @@ def journal_parser(out_data, folder, args):
     }
 
     for (index, line) in enumerate(bank_data, 1):
-        value['name'] = unicode(line[-1], 'utf-8')
+        value['name'] = unicode(line['aa_name'], 'utf-8')
         value['name'] = unidecode.unidecode(value['name'])
-        value['default_credit_account_id'] = line[0]
-        value['default_debit_account_id'] = line[0]
+        value['default_credit_account_id'] = line['aa_xml_id']
+        value['default_debit_account_id'] = line['aa_xml_id']
         xml_id = pattern.sub('', value['name'].lower())
         xml_id = pattern2.sub('_', xml_id)
         out_record = libxml2.newNode('record')
-        out_record.setProp('id', 'aj_{}_{}'.format(args['company_name'], line[0]))
+        out_record.setProp('id', 'aj_{}_{}'.format(
+            args['company_name'], line['aa_xml_id']))
         out_record.setProp('model', my_model)
         value['code'] = 'BJ{0:03d}'.format(index) 
 
