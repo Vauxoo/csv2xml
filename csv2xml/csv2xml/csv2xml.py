@@ -119,6 +119,7 @@ def journal_parser(out_data, folder, args):
         'default_credit_account_id': 'ref',
         'default_debit_account_id': 'ref',
         'company_id': 'ref',
+        'currency': 'ref',
     }
 
     for (index, line) in enumerate(bank_data, 1):
