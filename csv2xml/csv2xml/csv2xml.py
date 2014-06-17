@@ -88,7 +88,8 @@ def get_bank_data(folder):
     csv_name = 'account_account.csv'
     folder = folder.replace('account_journal', 'account_account')
     lines = csv.DictReader(open('/'.join([folder, csv_name])))
-    return [{'aa_xml_id': line['id'], 'aa_name': line['name']}
+    return [{'aa_xml_id': line['id'], 'aa_name': line['name'],
+             'acc_currency': line['currency_id']}
               for line in lines
               if line['type'] == 'liquidity']
 
@@ -131,7 +132,9 @@ def journal_parser(out_data, folder, args):
         out_record.setProp('id', 'aj_{}_{}'.format(
             args['company_name'], line['aa_xml_id']))
         out_record.setProp('model', my_model)
-        value['code'] = 'BJ{0:03d}'.format(index) 
+        value['code'] = 'BJ{0:03d}'.format(index)
+        if line['acc_currency']:
+            value['currency'] = line['acc_currency']
 
         for aj_field in value.keys():
             out_field = libxml2.newNode('field')
