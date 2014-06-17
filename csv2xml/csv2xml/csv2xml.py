@@ -108,10 +108,6 @@ def journal_parser(out_data, folder, args):
     bank_data = get_bank_data(folder)
     pattern = re.compile(r'(cta|cuenta|cc|cte|ca|no)(\.|-)*(\s)*', re.DOTALL)
     pattern2 = re.compile(r'(\s|\.)', re.DOTALL)
-    value = {
-       'company_id': 'base.main_company',
-       'type': 'bank',
-       }
     field_type = {
         'name': 'str',
         'code': 'str',
@@ -123,6 +119,9 @@ def journal_parser(out_data, folder, args):
     }
 
     for (index, line) in enumerate(bank_data, 1):
+        value = dict(
+            company_id='base.main_company',
+            type='bank')
         value['name'] = unicode(line['aa_name'], 'utf-8')
         value['name'] = unidecode.unidecode(value['name'])
         value['default_credit_account_id'] = line['aa_xml_id']
