@@ -194,16 +194,17 @@ def update_xml(args):
  
     print '... Updating the data xml files.'
     f = open( '/'.join([args['csv_dir'], '__config__.py']), 'r')
-    d = eval(f.read())
+    xml_data_list = eval(f.read())
     f.close()
     print ' ---- The script is running, please wait...'
-    for i in d.iteritems():
-        folder = '/'.join([args['csv_dir'], i[0]])
-        out_doc, out_data = initializate_xml_out()
-        csv_files = i[1]
-        genrate_xml_tree(csv_files, out_data, folder)
-        aditional_parser(i[0], out_data, folder, args)
-        write_xml_doc(out_doc, '%s/data/%s.xml' % (args['module_name'], i[0]) )
+    for d in xml_data_list:
+        for i in d.iteritems():
+            folder = '/'.join([args['csv_dir'], i[0]])
+            out_doc, out_data = initializate_xml_out()
+            csv_files = i[1]
+            genrate_xml_tree(csv_files, out_data, folder)
+            aditional_parser(i[0], out_data, folder, args)
+            write_xml_doc(out_doc, '%s/data/%s.xml' % (args['module_name'], i[0]) )
 
     print '... Update the module descriptor with the new data'
     update_file = '__openerp__.py'
@@ -278,7 +279,10 @@ def get_key_value(args, openerp_key, cr_data):
     @return an string that will be replace the value of openerp_key given.
     """
     cr_data = get_list_from_str(cr_data)
-    required_data = get_str_data(openerp_key)
+    if openerp_key in ['data']:
+        required_data = get_xml_files_from_config(args, openerp_key)
+    else:
+        required_data = get_str_data(openerp_key)
 
     for item in required_data:
         if item in cr_data:
@@ -286,6 +290,19 @@ def get_key_value(args, openerp_key, cr_data):
 
     new_data = required_data + cr_data
     return get_str_from_list(new_data)
+
+def get_xml_files_from_config(args, openerp_key):
+    """
+    @return a list of strings with the new required values of the openerp key
+    """
+    data_file = os.path.join(args['csv_dir'], '__config__.py')
+    with open(data_file, 'r') as f:
+        data = eval(f.read())
+    prefix = openerp_key == 'data' and 'data/' or ''
+    return [
+        '{prefix}{filename}.xml'.format(
+            prefix=prefix, filename=xml_data.keys()[0])
+        for xml_data in data]
 
 def get_str_data(openerp_key):
     """
