@@ -31,6 +31,4 @@
     {'stock_warehouse_orderpoint' : ['stock_warehouse_orderpoint.csv']},
     {'ir_mail_server' : ['ir_mail_server.csv']},
     {'fetchmail_server' : ['fetchmail_server.csv']},
-
-    {'bdp': ['hr_employee_category.csv', 'schedule_power.csv', 'schedule_power_line.csv']},
 ]
