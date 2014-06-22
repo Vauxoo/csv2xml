@@ -281,8 +281,8 @@ def get_key_value(args, openerp_key, cr_data):
     cr_data = get_list_from_str(cr_data)
     if openerp_key in ['data']:
         required_data = get_xml_files_from_config(args, openerp_key)
-    else:
-        required_data = get_str_data(openerp_key)
+    elif openerp_key in ['depends']:
+        required_data = get_depens_from_config(args, openerp_key)
 
     for item in required_data:
         if item in cr_data:
@@ -290,6 +290,36 @@ def get_key_value(args, openerp_key, cr_data):
 
     new_data = required_data + cr_data
     return get_str_from_list(new_data)
+
+def get_depens_from_config(args, openerp_key):
+    """
+    @return a list of strings with the new required values of the depends
+    openerp key.
+    """
+    # TODO: part of this code is duplicated. please modulate and reuse.
+    data_file = os.path.join(args['csv_dir'], '__config__.py')
+    with open(data_file, 'r') as f:
+        data = eval(f.read())
+    full_ids = list()
+    for d in data:
+        for i in d.iteritems():
+            folder = os.path.join(args['csv_dir'], i[0])
+            csv_files = i[1]
+            for csv_name in csv_files: 
+                lines = csv.DictReader(open(folder + '/' + csv_name))
+                line = lines.next()
+                line.pop('model')
+                line.pop('id')
+                fields_type = line
+                field_names = fields_type.keys()
+
+                for line in lines:
+                    full_ids.append(line.pop('id'))
+    depends_list = list(set([
+        item.split('.')[0]
+        for item in full_ids
+        if len(item.split('.')) == 2]))
+    return depends_list
 
 def get_xml_files_from_config(args, openerp_key):
     """
