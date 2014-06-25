@@ -11,7 +11,6 @@ import lxml.etree as etree
 import unidecode
 import json
 
-import pdb, pprint
 
 def _get_image( name):
     fil = open(name, 'rb')
