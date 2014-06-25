@@ -11,6 +11,7 @@ import lxml.etree as etree
 import unidecode
 import json
 
+
 def _get_image( name):
     fil = open(name, 'rb')
     data = fil.read()
@@ -191,20 +192,23 @@ def create_csv_template(args):
     return True
 
 def update_xml(args):
- 
+    """
+    Given the module path it add the xml data correspond to the given csv
+    files folder. Also update the module descriptor file, the depends and data
+    keys.
+    """
+    data = get_data_from_config_file(args)
     print '... Updating the data xml files.'
-    f = open( '/'.join([args['csv_dir'], '__config__.py']), 'r')
-    xml_data_list = eval(f.read())
-    f.close()
+    
     print ' ---- The script is running, please wait...'
-    for d in xml_data_list:
-        for i in d.iteritems():
-            folder = '/'.join([args['csv_dir'], i[0]])
-            out_doc, out_data = initializate_xml_out()
-            csv_files = i[1]
-            genrate_xml_tree(csv_files, out_data, folder)
-            aditional_parser(i[0], out_data, folder, args)
-            write_xml_doc(out_doc, '%s/data/%s.xml' % (args['module_name'], i[0]) )
+    for item in data.get('xml_files', []):
+        folder = os.path.join(args['csv_dir'], item.get('name'))
+        out_doc, out_data = initializate_xml_out()
+        csv_files = item.get('csv')
+        genrate_xml_tree(csv_files, out_data, folder)
+        aditional_parser(item.get('name'), out_data, folder, args)
+        write_xml_doc(out_doc, '{}/data/{}.xml'.format(
+            args['module_name'], item.get('name'))) 
 
     print '... Update the module descriptor with the new data'
     update_file = '__openerp__.py'
@@ -212,6 +216,7 @@ def update_xml(args):
     hard_update_file(args, update_file, 'depends')
 
     print ' --- The script successfully finish.' 
+    return True
 
 def hard_update_file(args, update_file, openerp_key):
     """
@@ -281,8 +286,9 @@ def get_key_value(args, openerp_key, cr_data):
     cr_data = get_list_from_str(cr_data)
     if openerp_key in ['data']:
         required_data = get_xml_files_from_config(args, openerp_key)
-    else:
-        required_data = get_str_data(openerp_key)
+    elif openerp_key in ['depends']:
+        required_data = list(set(get_depens_from_config(args) +
+        get_depends_form_xml_files(args)))
 
     for item in required_data:
         if item in cr_data:
@@ -291,17 +297,64 @@ def get_key_value(args, openerp_key, cr_data):
     new_data = required_data + cr_data
     return get_str_from_list(new_data)
 
-def get_xml_files_from_config(args, openerp_key):
+def get_data_from_config_file(args):
     """
-    @return a list of strings with the new required values of the openerp key
+    @ return a dictionary with the data given for the user in the config
+    file.
     """
     data_file = os.path.join(args['csv_dir'], '__config__.py')
     with open(data_file, 'r') as f:
         data = eval(f.read())
+    return data
+
+def get_depens_from_config(args):
+    """
+    @return a list of strings with de modules that will be dependecies of the
+    updated module. This data is extract for the config file given by the
+    user.
+    """
+    data = get_data_from_config_file(args)
+    depends_list = list()
+    for item in data.get('xml_files'):
+        depends_list.extend(item.get('depends'))
+    return list(set(depends_list))
+
+def get_depends_form_xml_files(args):
+    """
+    @return a list of strings with the new required values of the depends
+    openerp key.
+    """
+    data = get_data_from_config_file(args)
+    full_ids = list()
+    for item in data.get('xml_files'):
+        folder = os.path.join(args['csv_dir'], item.get('name'))
+        csv_files = item.get('csv')
+        for csv_name in csv_files: 
+            lines = csv.DictReader(open(folder + '/' + csv_name))
+            line = lines.next()
+            line.pop('model')
+            line.pop('id')
+            fields_type = line
+            field_names = fields_type.keys()
+
+            for line in lines:
+                full_ids.append(line.pop('id'))
+    depends_list = list(set([
+        item.split('.')[0]
+        for item in full_ids
+        if len(item.split('.')) == 2]))
+    return depends_list
+
+def get_xml_files_from_config(args, openerp_key):
+    """
+    @return a list of strings with the new required values of the openerp key
+    """
+    data = get_data_from_config_file(args)
     prefix = openerp_key == 'data' and 'data/' or ''
+    data = data.get('xml_files', [])
     return [
         '{prefix}{filename}.xml'.format(
-            prefix=prefix, filename=xml_data.keys()[0])
+            prefix=prefix, filename=xml_data.get('name'))
         for xml_data in data]
 
 def get_str_data(openerp_key):
