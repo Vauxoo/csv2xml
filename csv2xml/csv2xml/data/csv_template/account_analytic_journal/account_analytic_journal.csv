@@ -1,0 +1,4 @@
+id,model,code,name,type,active
+str,str,str,str,str,str
+account_analytic_journal_001,account.analytic.journal,VEN,Ventas,sale,true
+account_analytic_journal_002,account.analytic.journal,COM,Compras,purchase,true
