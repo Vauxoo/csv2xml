@@ -1,3 +1,3 @@
 id,model,name,code,plan_id,journal_id
 str,str,str,str,ref,ref
-account_analytic_plan_instance_001,account.analytic.plan.instance,OVL 2014,AD001,account_analytic_plan_001,account_analytic_journal_001
+account_analytic_plan_instance_001,account.analytic.plan.instance,OVL 2014,AD001,account_analytic_plan_001,account_analytic_journal_002
