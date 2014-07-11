@@ -1,0 +1,8 @@
+id,model,rate,analytic_account_id,plan_id
+str,str,str,search,ref
+account_analytic_plan_instance_line_001,account.analytic.plan.instance.line,13.9,AA002,account_analytic_plan_instance_001
+account_analytic_plan_instance_line_002,account.analytic.plan.instance.line,14,AA003,account_analytic_plan_instance_001
+account_analytic_plan_instance_line_003,account.analytic.plan.instance.line,26.8,AA004,account_analytic_plan_instance_001
+account_analytic_plan_instance_line_004,account.analytic.plan.instance.line,28.5,AA005,account_analytic_plan_instance_001
+account_analytic_plan_instance_line_005,account.analytic.plan.instance.line,10.6,AA006,account_analytic_plan_instance_001
+account_analytic_plan_instance_line_006,account.analytic.plan.instance.line,6.2,AA007,account_analytic_plan_instance_001

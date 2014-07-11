@@ -1,9 +1,2 @@
 id,model,code,name,parent_id,type
 str,str,str,str,search,str
-account_analytic_account_001,account.analytic.account,AA001,Vauxoo,,view
-account_analytic_account_002,account.analytic.account,AA002,Administración,AA001,normal
-account_analytic_account_003,account.analytic.account,AA003,Atención Al Cliente,AA001,normal
-account_analytic_account_004,account.analytic.account,AA004,I+D,AA001,normal
-account_analytic_account_005,account.analytic.account,AA005,Servicios Generales,AA001,normal
-account_analytic_account_006,account.analytic.account,AA006,Ventas,AA001,normal
-account_analytic_account_007,account.analytic.account,AA007,Viáticos,AA001,normal

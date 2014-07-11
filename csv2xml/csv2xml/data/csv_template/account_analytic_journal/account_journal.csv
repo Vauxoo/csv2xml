@@ -1,4 +1,2 @@
 id,model,analytic_journal_id
 str,str,ref
-aj_mycompany_purchase,account.journal,account_analytic_journal_002
-aj_mycompany_sale,account.journal,account_analytic_journal_001
