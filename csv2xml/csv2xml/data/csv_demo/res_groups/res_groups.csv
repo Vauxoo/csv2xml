@@ -1,0 +1,3 @@
+id,model,name,users
+str,str,str,m2m
+res_groups_001,res.groups,Group 001,res_user_001

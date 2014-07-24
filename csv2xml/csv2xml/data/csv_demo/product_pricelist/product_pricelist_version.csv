@@ -1,0 +1,3 @@
+id,model,name,active,pricelist_id
+str,str,str,evalc,ref
+pricelist_version_001,product.pricelist.version,Pricelist Version 001,True,pricelist_001

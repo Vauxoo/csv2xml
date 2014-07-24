@@ -1,0 +1,15 @@
+id,model,code,name,special,fiscalyear_id,date_start,date_stop,company_id
+str,str,evalc,evalc,evalc,ref,evalc,evalc,ref
+ap_mycompany_00,account.period,'AP/'+time.strftime('%Y'),'X AP/'+time.strftime('%Y'),True,af_mycompany,time.strftime('%Y')+'-01-01',time.strftime('%Y')+'-01-01',base.main_company
+ap_mycompany_01,account.period,'01/'+time.strftime('%Y'),'X 01/'+time.strftime('%Y'),False,af_mycompany,time.strftime('%Y')+'-01-01',time.strftime('%Y')+'-01-31',base.main_company
+ap_mycompany_02,account.period,'02/'+time.strftime('%Y'),'X 02/'+time.strftime('%Y'),False,af_mycompany,time.strftime('%Y')+'-02-01',"(DateTime.today().replace(month=3, day=1) - timedelta(days=1)).strftime('%Y-%m-%d')",base.main_company
+ap_mycompany_03,account.period,'03/'+time.strftime('%Y'),'X 03/'+time.strftime('%Y'),False,af_mycompany,time.strftime('%Y')+'-03-01',time.strftime('%Y')+'-03-31',base.main_company
+ap_mycompany_04,account.period,'04/'+time.strftime('%Y'),'X 04/'+time.strftime('%Y'),False,af_mycompany,time.strftime('%Y')+'-04-01',time.strftime('%Y')+'-04-30',base.main_company
+ap_mycompany_05,account.period,'05/'+time.strftime('%Y'),'X 05/'+time.strftime('%Y'),False,af_mycompany,time.strftime('%Y')+'-05-01',time.strftime('%Y')+'-05-31',base.main_company
+ap_mycompany_06,account.period,'06/'+time.strftime('%Y'),'X 06/'+time.strftime('%Y'),False,af_mycompany,time.strftime('%Y')+'-06-01',time.strftime('%Y')+'-06-30',base.main_company
+ap_mycompany_07,account.period,'07/'+time.strftime('%Y'),'X 07/'+time.strftime('%Y'),False,af_mycompany,time.strftime('%Y')+'-07-01',time.strftime('%Y')+'-07-31',base.main_company
+ap_mycompany_08,account.period,'08/'+time.strftime('%Y'),'X 08/'+time.strftime('%Y'),False,af_mycompany,time.strftime('%Y')+'-08-01',time.strftime('%Y')+'-08-31',base.main_company
+ap_mycompany_09,account.period,'09/'+time.strftime('%Y'),'X 09/'+time.strftime('%Y'),False,af_mycompany,time.strftime('%Y')+'-09-01',time.strftime('%Y')+'-09-30',base.main_company
+ap_mycompany_10,account.period,'10/'+time.strftime('%Y'),'X 10/'+time.strftime('%Y'),False,af_mycompany,time.strftime('%Y')+'-10-01',time.strftime('%Y')+'-10-31',base.main_company
+ap_mycompany_11,account.period,'11/'+time.strftime('%Y'),'X 11/'+time.strftime('%Y'),False,af_mycompany,time.strftime('%Y')+'-11-01',time.strftime('%Y')+'-11-30',base.main_company
+ap_mycompany_12,account.period,'12/'+time.strftime('%Y'),'X 12/'+time.strftime('%Y'),False,af_mycompany,time.strftime('%Y')+'-12-01',time.strftime('%Y')+'-12-31',base.main_company

@@ -1,0 +1,4 @@
+id,model,name,company_id,description,requirements
+str,str,str,ref,str,str
+hr_job_001,hr.job,Job 1,base.main_company,Descripcion aca 1,Requirements aca 1
+hr_job_002,hr.job,Job 2,base.main_company,Descripcion aca 2,Requirements aca 2

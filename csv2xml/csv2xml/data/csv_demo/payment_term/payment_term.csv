@@ -1,0 +1,3 @@
+id,model,name,active
+str,str,str,evalc
+payment_term_001,account.payment.term,Ejemplo Payment 001,True

@@ -1,0 +1,4 @@
+id,model,manager_id
+str,str,ref
+hr_department_001,hr.department,hr_employee_001
+hr_department_002,hr.department,

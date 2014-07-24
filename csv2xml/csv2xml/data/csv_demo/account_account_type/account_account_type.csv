@@ -1,0 +1,9 @@
+id,model,name,code,close_method,report_type,note
+str,str,str,str,str,str,str
+aat_estructura,account.account.type,ESTRUCTURA DE CUENTAS,ESTRUCTURA,none,none,
+aat_balance,account.account.type,CUENTAS DE BALANCE,BALANCE,balance,none,
+aat_resultados,account.account.type,CUENTAS DE RESULTADOS,RESULTADOS,none,none,
+aat_cobrar,account.account.type,CUENTAS POR COBRAR,COBRAR,unreconciled,none,
+aat_pagar,account.account.type,CUENTAS POR PAGAR,PAGAR,unreconciled,none,
+aat_banco,account.account.type,CUENTAS DE BANCO,BANCO,balance,none,
+aat_conciliable,account.account.type,CUENTAS CONCILIABLE,CONCILIABLE,unreconciled,none,
