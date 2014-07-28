@@ -1,0 +1,5 @@
+id,model,value,days,days2,payment_id
+str,str,str,str,str,ref
+payment_line_001,account.payment.term.line,balance,28,0,payment_term_001
+payment_line_002,account.payment.term.line,fixed,27,1,payment_term_001
+payment_line_003,account.payment.term.line,procent,26,2,payment_term_001

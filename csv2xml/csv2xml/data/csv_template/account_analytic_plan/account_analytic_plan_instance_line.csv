@@ -1,0 +1,2 @@
+id,model,rate,analytic_account_id,plan_id
+str,str,str,search,ref

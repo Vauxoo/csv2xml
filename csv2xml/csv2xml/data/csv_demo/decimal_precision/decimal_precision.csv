@@ -1,0 +1,3 @@
+id,model,name,digits
+str,str,str,evalc
+cicsa_two_decimal,decimal.precision,Cicsa Two Decimals,2

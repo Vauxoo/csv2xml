@@ -1,0 +1,2 @@
+id,model,name,code,plan_id,journal_id
+str,str,str,str,ref,ref

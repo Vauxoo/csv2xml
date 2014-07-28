@@ -1,0 +1,4 @@
+id,model,name,usage,chained_location_type,chained_auto_packing,company_id,location_id
+str,str,str,str,str,str,ref,ref
+stock.stock_location_company,stock.location,STOCK LOCATION COMPANY
+stock_location_001,stock.location,LOCATION 001,internal,none,manual,base.main_company,stock.stock_location_company

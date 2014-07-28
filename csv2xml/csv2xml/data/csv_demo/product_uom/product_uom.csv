@@ -1,0 +1,3 @@
+id,model,name,uom_type,factor,rounding,category_id,active
+str,str,str,str,str,str,ref,evalc
+product_uom_001,product.uom,Candela,smaller,10,0.01,product_uom_categ_001,True
