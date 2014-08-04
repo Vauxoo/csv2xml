@@ -40,7 +40,7 @@ def set_property(type_field, value, out_field, folder = None):
     elif type_field == 'searchname':
         out_field.setProp('search', "[('name', '=', '%s')]" % value)
     elif 'search_' in type_field:
-        field_name = type_field.split('_', 1)[0]
+        field_name = type_field.split('_', 1)[1]
         out_field.setProp('search', str([(field_name, '=', value)]))
     elif type_field == 'bin':
         und = re.compile('\n')
