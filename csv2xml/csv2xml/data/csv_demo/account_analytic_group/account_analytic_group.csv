@@ -1,0 +1,8 @@
+id,model,name
+str,str,str
+aag_cicsa_001,account.analytic.group,Administración
+aag_cicsa_002,account.analytic.group,Atención Al Cliente
+aag_cicsa_003,account.analytic.group,I+D
+aag_cicsa_004,account.analytic.group,Servicios Generales
+aag_cicsa_005,account.analytic.group,Ventas
+aag_cicsa_006,account.analytic.group,Viáticos
