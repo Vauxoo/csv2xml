@@ -42,6 +42,7 @@ setup(
         'data/csv_template/account_analytic_account/*',
         'data/csv_template/account_analytic_journal/*',
         'data/csv_template/account_analytic_plan/*',
+        'data/csv_template/account_analytic_group/*',
         'data/csv_template/account_tax/*',
         'data/csv_template/islr_wh_concept/*',
         'data/csv_template/product_category/*',
