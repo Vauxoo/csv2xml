@@ -1,0 +1,3 @@
+id,model,key,value
+str,str,str,str
+ir_config_parameter_001,ir.config_parameter,ir_attachment.location,file:///filestore

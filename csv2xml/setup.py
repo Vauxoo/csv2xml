@@ -63,6 +63,7 @@ setup(
         'data/csv_template/hr/*',
         'data/csv_template/stock_warehouse_orderpoint/*',
         'data/csv_template/ir_sequence/*',
+        'data/csv_template/ir_config/*',
         'data/csv_template/ir_mail_server/*',
         'data/csv_template/fetchmail_server/*',
         'data/csv_template/res_groups/*',
