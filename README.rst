@@ -17,7 +17,7 @@ Download
 This python module is hosted on launchpad.net repository branch. Can be
 downloaded by running this command::
     
-    bzr branch lp:vauxoo-private/csv2xml
+    git clone git@github.com:Vauxoo/csv2xml.git
 
 Dependencies
 ------------
