@@ -1,5 +1,9 @@
-README
-======
+===============================
+csv2xml
+===============================
+
+.. image:: https://img.shields.io/travis/vauxoo/csv2xml.svg
+        :target: https://travis-ci.org/vauxoo/csv2xml
 
 This module python is a tool to openerp developers that permit to generate data
 xml files from csv files. This is a practical way to work with a client. The
@@ -98,3 +102,15 @@ Just run in your console::
 
 If the file have not excecution permissions then just change the file
 permissions (chmod) and execute the above command.
+
+Credits
+---------
+
+This package was created by Vauxoo_
+
+.. _Vauxoo: https://www.vauxoo.com/
+
+This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+
+.. _Cookiecutter: https://github.com/audreyr/cookiecutter
+.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage

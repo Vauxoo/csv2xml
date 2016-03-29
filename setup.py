@@ -21,10 +21,20 @@ try:
     import shutil
     import doctest
 except ImportError, e:
-    raise Exception("{}. You must install the missed python module to use csv2xml module.".format(e)) 
+    raise Exception("{}. You must install the missed python module to use csv2xml module.".format(e))
 
 cmdclass = {'build_py': build_py}
 command_options = {}
+
+with open('README.rst') as readme_file:
+    readme = readme_file.read()
+
+with open('HISTORY.rst') as history_file:
+    history = history_file.read()
+
+test_requirements = [
+         # TODO: put package test requirements here
+]
 
 setup(
     name='CSV2XML',
@@ -77,4 +87,15 @@ setup(
     #~ install_requires=[],
     cmdclass=cmdclass,
     command_options=command_options,
+    classifiers=[
+        'Development Status :: 2 - Pre-Alpha',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: ISC License (ISCL)',
+        'Natural Language :: English',
+        "Programming Language :: Python :: 2",
+        'Programming Language :: Python :: 2.6',
+        'Programming Language :: Python :: 2.7',
+    ],
+    test_suite='tests',
+    tests_require=test_requirements,
 )
