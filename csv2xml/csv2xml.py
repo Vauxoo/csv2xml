@@ -17,10 +17,10 @@ def _get_image( name):
     data = fil.read()
     fil.close()
     binary = data.encode('base64')
-    return binary 
+    return binary
 
 def initializate_xml_out():
-    out_doc = libxml2.parseDoc("<openerp/>") 
+    out_doc = libxml2.parseDoc("<openerp/>")
     out_root = out_doc.getRootElement()
     out_data = libxml2.newNode('data')
     out_data.setProp('noupdate','1')
@@ -28,7 +28,7 @@ def initializate_xml_out():
     return out_doc, out_data
 
 def set_property(type_field, value, out_field, folder = None):
-    band = True    
+    band = True
     if  type_field == 'ref':
         out_field.setProp(type_field, value)
     elif type_field == 'date':
@@ -53,14 +53,14 @@ def set_property(type_field, value, out_field, folder = None):
                 ref_list = "[ref('{id_xml}')".format(id_xml=i)
             else:
                 ref_list = "{lista},ref('{id_xml}')".format(lista=ref_list,id_xml=i)
-        ref_list = "[(6, 0, {lista}])]".format(lista=ref_list)       
+        ref_list = "[(6, 0, {lista}])]".format(lista=ref_list)
         out_field.setProp('eval', ref_list)
     else:
         band = False
     return band
 
 def genrate_xml_tree(csv_files, out_data, folder):
-    for csv_name in csv_files: 
+    for csv_name in csv_files:
         print ' ---- generating the xml of %s file' % (csv_name,)
         lines = csv.DictReader(open(folder + '/' + csv_name))
         line = lines.next()
@@ -153,7 +153,7 @@ def journal_parser(out_data, folder, args):
             out_record.addChild(out_field)
 
         out_data.addChild(out_record)
-    return True 
+    return True
 
 def aditional_parser(model_name, out_data, folder, args):
     """
@@ -183,7 +183,7 @@ def create_csv_template(args):
     print ' .. Creating the csv template'
     os.system('cp {path}/data/csv_template {new_folder} -r'.format(
         path=get_main_script_dir(), new_folder=args['csv_dir']))
-    
+
     file_list = []
     for (dirpath, dirnames, filenames) in os.walk(args['csv_dir']):
         for filename in filenames:
@@ -202,7 +202,7 @@ def update_xml(args):
     """
     data = get_data_from_config_file(args)
     print '... Updating the data xml files.'
-    
+
     print ' ---- The script is running, please wait...'
     for item in data.get('xml_files', []):
         folder = os.path.join(args['csv_dir'], item.get('name'))
@@ -211,14 +211,14 @@ def update_xml(args):
         genrate_xml_tree(csv_files, out_data, folder)
         aditional_parser(item.get('name'), out_data, folder, args)
         write_xml_doc(out_doc, '{}/data/{}.xml'.format(
-            args['module_name'], item.get('name'))) 
+            args['module_name'], item.get('name')))
 
     print '... Update the module descriptor with the new data'
     update_file = '__openerp__.py'
     hard_update_file(args, update_file, 'data')
     hard_update_file(args, update_file, 'depends')
 
-    print ' --- The script successfully finish.' 
+    print ' --- The script successfully finish.'
     return True
 
 def hard_update_file(args, update_file, openerp_key):
@@ -232,7 +232,7 @@ def hard_update_file(args, update_file, openerp_key):
                         descriptor (in __openerp__.py).
     @return True
     """
-    path = args['module_name'] 
+    path = args['module_name']
     file_path = os.path.join(path, update_file)
     with open(file_path, 'r') as f:
         file_str = f.read()
@@ -251,7 +251,7 @@ def hard_update_file(args, update_file, openerp_key):
 def get_list_from_str(str_values):
     """
     Transforms the string with the values of the an openerp key (descriptor of
-    a openerp module) and return a list of strings of the elements.
+    a Odoo module) and return a list of strings of the elements.
     @param str_values: string with the content of the openerp key (string).
     @return a list of strings with the content data (list).
     """
@@ -332,7 +332,7 @@ def get_depends_form_xml_files(args):
     for item in data.get('xml_files'):
         folder = os.path.join(args['csv_dir'], item.get('name'))
         csv_files = item.get('csv')
-        for csv_name in csv_files: 
+        for csv_name in csv_files:
             lines = csv.DictReader(open(folder + '/' + csv_name))
             line = lines.next()
             line.pop('model')
@@ -363,7 +363,7 @@ def get_xml_files_from_config(args, openerp_key):
 def get_str_data(openerp_key):
     """
     @return a list of strings with the new required values of the openerp key
-    in the openerp descriptor file. 
+    in the Odoo descriptor file.
     """
     data_file = '{path}/data/openerp_key.json'.format(
         path=get_main_script_dir())
@@ -382,12 +382,12 @@ def argument_parser(args_list=None):
         prog='csv2xml',
         description='Update data xml from a module via csv files.',
         epilog="""
-Openerp Developer Comunity Tool Development by Vauxoo Team (lp:~vauxoo)
+Odoo Developer Comunity Tool Development by Vauxoo Team (https://www.github.com/Vauxoo)
 Coded by:
     - Katherine Zaoral <kathy@vauxoo.com>,
     - Yanina Aular <yanina@vauxoo.com>,
     - Saul Gonzanlez <saul@vauxoo.com>.
-Source code at lp:vauxoo-private/csv2xml
+Source code at git@github.com:Vauxoo/csv2xml.git
 """,
         formatter_class=argparse.RawDescriptionHelpFormatter)
 
@@ -408,7 +408,7 @@ Source code at lp:vauxoo-private/csv2xml
         help='name of the module to be update.')
     update_parser.add_argument(
         '-csv','--csv-dir',
-        metavar='CSV_DIR', 
+        metavar='CSV_DIR',
         required=True,
         type=dir_full_path,
         help='the folder where your csv and config files are.')
@@ -421,7 +421,7 @@ Source code at lp:vauxoo-private/csv2xml
 
     create_parser.add_argument(
         '-csv','--csv-dir',
-        metavar='CSV_DIR', 
+        metavar='CSV_DIR',
         type=dir_full_path,
         default=os.getcwd(),
         help=('Where to put the csv templates folder. If not specificated'

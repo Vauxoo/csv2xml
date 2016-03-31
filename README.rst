@@ -5,7 +5,7 @@ csv2xml
 .. image:: https://img.shields.io/travis/vauxoo/csv2xml.svg
         :target: https://travis-ci.org/vauxoo/csv2xml
 
-This module python is a tool to openerp developers that permit to generate data
+This module python is a tool to Odoo developers that permit to generate data
 xml files from csv files. This is a practical way to work with a client. The
 client give the company data in csv files and then the developer run this tool
 to generate the corresponding xml files. This tool is a time saver and also
@@ -14,7 +14,7 @@ reduce in a big way the human errors in the data transition.
 Download
 --------
 
-This python module is hosted on launchpad.net repository branch. Can be
+This python module is hosted on github repository branch. Can be
 downloaded by running this command::
     
     git clone git@github.com:Vauxoo/csv2xml.git
@@ -54,12 +54,12 @@ will display the script options::
     optional arguments:
       -h, --help       show this help message and exit
 
-    Openerp Developer Comunity Tool Development by Vauxoo Team (lp:~vauxoo)
+    Odoo Developer Comunity Tool Development by Vauxoo Team (https://www.github.com/Vauxoo)
     Coded by:
         - Katherine Zaoral <kathy@vauxoo.com>,
         - Yanina Aular <yanina@vauxoo.com>,
         - Saul Gonzanlez <saul@vauxoo.com>.
-    Source code at lp:vauxoo-private/csv2xml
+    Source code at git@github.com:Vauxoo/csv2xml.git
 
 Configure
 ---------
@@ -80,7 +80,7 @@ To create a new csv template folder you need to run the next command::
 
     $ csv2xml create -co <company-acronym>
 
-To update a openerp module xml data just need to indicate the module path and
+To update a Odoo module xml data just need to indicate the module path and
 the csv path were youre csv data is::
 
     $ csv2xml update -m <module-folder-path> -csv <csv-folder-path> \
