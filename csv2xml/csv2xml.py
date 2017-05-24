@@ -210,8 +210,9 @@ def update_xml(args):
         csv_files = item.get('csv')
         genrate_xml_tree(csv_files, out_data, folder)
         aditional_parser(item.get('name'), out_data, folder, args)
-        write_xml_doc(out_doc, '{}/data/{}.xml'.format(
-            args['module_name'], item.get('name')))
+        write_xml_doc(out_doc, '{}/{}.xml'.format(
+            args['new_path'],
+            item.get('name')))
 
     print '... Update the module descriptor with the new data'
     update_file = '__openerp__.py'
@@ -413,6 +414,12 @@ Source code at git@github.com:Vauxoo/csv2xml.git
         type=dir_full_path,
         help='the folder where your csv and config files are.')
     update_parser.add_argument(
+        '-n', '--new-path',
+        metavar='PATH',
+        required=True,
+        type=dir_full_path,
+        help='the folder where xml file will be created.')
+    update_parser.add_argument(
         '-co', '--company-name',
         metavar='COMPANY_NAME',
         required=True,
@@ -457,10 +464,6 @@ def fix_module_name(path):
         msg = ('The given module is not a openerp module. Missing'
                 ' __openerp__.py or __manifest__.py file.')
         raise argparse.ArgumentTypeError(msg)
-    dir_full_path(
-        os.path.join(path, 'data'),
-        ('The openerp module needs to have a data folder were to put the new'
-         ' xml data.'))
     return path
 
 def dir_full_path(path, msg=None):
