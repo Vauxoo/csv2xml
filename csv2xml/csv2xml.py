@@ -214,11 +214,6 @@ def update_xml(args):
             args['new_path'],
             item.get('name')))
 
-    print '... Update the module descriptor with the new data'
-    update_file = '__openerp__.py'
-    hard_update_file(args, update_file, 'data')
-    hard_update_file(args, update_file, 'depends')
-
     print ' --- The script successfully finish.'
     return True
 
