@@ -452,7 +452,6 @@ def fix_module_name(path):
         - Check that the module have a data folder.
     @return the full path of the module.
     """
-    print ' ---- entre aqui'
     path = dir_full_path(path)
     openerp_file = os.path.join(path, '__openerp__.py')
     manifest_file = os.path.join(path, '__manifest__.py')
