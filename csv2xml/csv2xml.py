@@ -448,11 +448,14 @@ def fix_module_name(path):
     print ' ---- entre aqui'
     path = dir_full_path(path)
     openerp_file = os.path.join(path, '__openerp__.py')
+    manifest_file = os.path.join(path, '__manifest__.py')
     if os.path.exists(openerp_file) and os.path.isfile(openerp_file):
+        pass
+    if os.path.exists(manifest_file) and os.path.isfile(manifest_file):
         pass
     else:
         msg = ('The given module is not a openerp module. Missing'
-                ' __openerp__.py file.')
+                ' __openerp__.py or __manifest__.py file.')
         raise argparse.ArgumentTypeError(msg)
     dir_full_path(
         os.path.join(path, 'data'),
